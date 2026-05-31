@@ -501,12 +501,14 @@
   box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), 0.3);
 }
 
-.tab-content {
+.tab-content,
+.artifact-tab-content {
   display: none;
   animation: slideInContent 0.4s ease;
 }
 
-.tab-content.active {
+.tab-content.active,
+.artifact-tab-content.active {
   display: block;
 }
 
