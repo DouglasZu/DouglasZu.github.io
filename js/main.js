@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---- Stats Counter ----
   initStatsCounter();
+
+  // ---- i18n (must be after DOM is populated) ----
+  window.i18nInstance = new I18n();
 });
 
 /* ============================================
@@ -37,7 +40,9 @@ function initTypewriter() {
   const element = document.getElementById('typewriter');
   if (!element) return;
 
-  const roles = [
+  // Get initial language from localStorage or default to 'en'
+  const currentLang = localStorage.getItem('lang') || 'en';
+  let roles = (window.typewriterRoles && window.typewriterRoles[currentLang]) || [
     'QA Engineer',
     'Test Automation Engineer',
     'Quality Advocate',
@@ -49,6 +54,7 @@ function initTypewriter() {
   let charIndex = 0;
   let isDeleting = false;
   let typingSpeed = 100;
+  let timeoutId = null;
 
   function type() {
     const currentRole = roles[roleIndex];
@@ -73,8 +79,24 @@ function initTypewriter() {
       typingSpeed = 400;
     }
 
-    setTimeout(type, typingSpeed);
+    timeoutId = setTimeout(type, typingSpeed);
   }
+
+  // Expose method to update roles on language switch
+  window.typewriterInstance = {
+    updateRoles: function(lang) {
+      if (window.typewriterRoles && window.typewriterRoles[lang]) {
+        roles = window.typewriterRoles[lang];
+        // Reset to start cleanly
+        if (timeoutId) clearTimeout(timeoutId);
+        roleIndex = 0;
+        charIndex = 0;
+        isDeleting = false;
+        element.textContent = '';
+        timeoutId = setTimeout(type, 400);
+      }
+    }
+  };
 
   // Start after a short delay
   setTimeout(type, 1000);
