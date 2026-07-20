@@ -100,11 +100,19 @@ class Navigation {
     if (this.mobileOverlay) {
       this.mobileOverlay.addEventListener('click', () => this.closeMobileMenu());
     }
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && this.mobileMenu.classList.contains('open')) {
+        this.closeMobileMenu();
+        this.mobileToggle.focus();
+      }
+    });
   }
 
   toggleMobileMenu() {
     const isOpen = this.mobileMenu.classList.toggle('open');
     this.mobileToggle.classList.toggle('active', isOpen);
+    this.mobileToggle.setAttribute('aria-expanded', String(isOpen));
+    this.mobileToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
     if (this.mobileOverlay) {
       this.mobileOverlay.classList.toggle('visible', isOpen);
     }
@@ -114,6 +122,8 @@ class Navigation {
   closeMobileMenu() {
     this.mobileMenu.classList.remove('open');
     this.mobileToggle.classList.remove('active');
+    this.mobileToggle.setAttribute('aria-expanded', 'false');
+    this.mobileToggle.setAttribute('aria-label', 'Open navigation menu');
     if (this.mobileOverlay) {
       this.mobileOverlay.classList.remove('visible');
     }

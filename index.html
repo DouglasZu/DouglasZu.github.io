@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="pt-BR" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Douglas Zulim — QA Engineer & Test Automation Specialist</title>
-  <meta name="description" content="Portfolio of Douglas Zulim, a QA Engineer with 5+ years of experience in test automation, API testing, CI/CD, and quality assurance. Based in Brazil.">
+  <title>Douglas Zulim — Engenheiro de QA e Automação de Testes</title>
+  <meta name="description" content="Portfólio de Douglas Zulim, Engenheiro de QA com cinco anos de experiência em automação de testes, testes de API, CI/CD e garantia da qualidade.">
   <meta name="keywords" content="QA Engineer, Test Automation, Selenium, Cypress, Playwright, Quality Assurance, SDET, Douglas Zulim">
   <meta name="author" content="Douglas Zulim">
   <meta property="og:title" content="Douglas Zulim — QA Engineer Portfolio">
@@ -24,8 +24,11 @@
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/redesign.css">
 </head>
 <body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <!-- ============================
        PRELOADER
@@ -42,9 +45,9 @@
   <!-- ============================
        NAVIGATION
        ============================ -->
-  <nav class="navbar" id="navbar">
+  <nav class="navbar" id="navbar" aria-label="Primary navigation">
     <div class="container">
-      <a href="#" class="nav-logo">Douglas<span>.</span></a>
+      <a href="#hero" class="nav-logo" aria-label="Douglas Zulim — back to top"><span class="nav-logo-mark">DZ</span><span class="nav-logo-name">Douglas<span>.</span></span></a>
 
       <div class="nav-links" id="nav-links">
         <a href="#about" data-i18n="nav.about">About</a>
@@ -59,7 +62,7 @@
             <svg class="lang-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M12.87 15.07l-2.54-2.51.03-.03A17.52 17.52 0 0014.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
             </svg>
-            <span id="lang-toggle-label">PT</span>
+            <span id="lang-toggle-label">EN</span>
           </button>
           <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
             <!-- Sun Icon -->
@@ -74,48 +77,88 @@
         </div>
       </div>
 
-      <div class="mobile-menu-toggle" id="mobile-toggle">
+      <button class="mobile-menu-toggle" id="mobile-toggle" type="button" aria-label="Open navigation menu" aria-controls="nav-links" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
     </div>
   </nav>
+
+  <main id="main-content">
 
   <!-- ============================
        1. HERO SECTION
        ============================ -->
   <section class="hero" id="hero">
-    <canvas class="hero-canvas" id="hero-particles"></canvas>
+    <canvas class="hero-canvas" id="hero-particles" aria-hidden="true"></canvas>
 
-    <div class="hero-content">
-      <div class="hero-label">
-        <span class="dot"></span>
-        <span data-i18n="hero.label">Sorocaba-SP, Brasil · Open to opportunities</span>
+    <div class="container hero-shell">
+      <div class="hero-content">
+        <div class="hero-label">
+          <span class="dot"></span>
+          <span data-i18n="hero.label">Sorocaba-SP, Brasil · Open to opportunities</span>
+        </div>
+
+        <h1>
+          <span class="hero-title-line" data-i18n="hero.greeting">Hi, I'm <span class="text-gradient">Douglas Zulim</span></span>
+          <span class="hero-title-line hero-title-role">
+            <span class="hero-role" id="typewriter">QA Engineer</span><span class="hero-cursor"></span>
+          </span>
+        </h1>
+
+        <p class="hero-tagline" data-i18n="hero.tagline">
+          I break things before users do. Five years turning chaos into confidence through test automation with Playwright, Selenium, and a relentless pursuit of quality.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">
+            <svg viewBox="0 0 24 24"><path d="M3 3h7v7H3V3zm11 0h7v7h-7V3zm0 11h7v7h-7v-7zM3 14h7v7H3v-7z"/></svg>
+            <span data-i18n="hero.btnProjects">View Projects</span>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm16 2l-8 5-8-5v2l8 5 8-5V6z"/></svg>
+            <span data-i18n="hero.btnContact">Get in Touch</span>
+          </a>
+        </div>
+
+        <div class="hero-meta" aria-label="Core expertise">
+          <span>API</span>
+          <span>Web</span>
+          <span>Desktop</span>
+          <span>Automation</span>
+        </div>
       </div>
 
-      <h1>
-        <span class="hero-title-line" data-i18n="hero.greeting">Hi, I'm <span class="text-gradient">Douglas Zulim</span></span>
-        <span class="hero-title-line">
-          <span class="hero-role" id="typewriter">QA Engineer</span><span class="hero-cursor"></span>
-        </span>
-      </h1>
+      <aside class="hero-proof" aria-label="Quality engineering profile">
+        <div class="proof-toolbar">
+          <div class="proof-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <span class="proof-file">release-readiness.yml</span>
+          <span class="proof-status"><i></i> verified</span>
+        </div>
 
-      <p class="hero-tagline" data-i18n="hero.tagline">
-        I break things before users do. 4+ years turning chaos into confidence through test automation with Playwright, Selenium, and a relentless pursuit of quality.
-      </p>
+        <div class="proof-body">
+          <div class="proof-heading">
+            <span data-i18n="hero.proofEyebrow">QUALITY SIGNAL</span>
+            <strong data-i18n="hero.proofTitle">Confidence before release.</strong>
+          </div>
 
-      <div class="hero-buttons">
-        <a href="#projects" class="btn btn-primary">
-          <svg viewBox="0 0 24 24"><path d="M3 3h7v7H3V3zm11 0h7v7h-7V3zm0 11h7v7h-7v-7zM3 14h7v7H3v-7z"/></svg>
-          <span data-i18n="hero.btnProjects">View Projects</span>
-        </a>
-        <a href="#contact" class="btn btn-secondary">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm16 2l-8 5-8-5v2l8 5 8-5V6z"/></svg>
-          <span data-i18n="hero.btnContact">Get in Touch</span>
-        </a>
+          <div class="proof-metrics">
+            <div class="proof-metric"><span data-i18n="hero.proofExperience">Experience</span><strong data-i18n="hero.proofExperienceValue">5 years</strong></div>
+            <div class="proof-metric"><span data-i18n="hero.proofCoverage">Coverage</span><strong>API · Web · Desktop</strong></div>
+            <div class="proof-metric proof-metric-wide"><span data-i18n="hero.proofAutomation">Automation</span><strong>Playwright · Postman · Selenium</strong></div>
+          </div>
+
+          <div class="proof-pipeline" aria-label="Quality delivery pipeline">
+            <span><i>01</i><b data-i18n="hero.proofStep1">Understand risk</b></span>
+            <span><i>02</i><b data-i18n="hero.proofStep2">Automate wisely</b></span>
+            <span><i>03</i><b data-i18n="hero.proofStep3">Ship with evidence</b></span>
+          </div>
+
+          <div class="proof-footer"><span>quality-gate</span><strong><i></i> READY</strong></div>
+        </div>
+      </aside>
       </div>
-    </div>
 
     <div class="hero-scroll-indicator">
       <span data-i18n="hero.scroll">Scroll</span>
@@ -137,27 +180,27 @@
       <div class="about-grid">
         <div class="about-text reveal-left">
           <p data-i18n="about.p1">
-            I'm <strong>Douglas Zulim</strong>, a Quality Assurance Engineer based in <strong>Sorocaba-SP, Brasil</strong> with over <strong>4 years</strong> of experience in automated and manual testing, ensuring software reliability and user satisfaction.
+            I'm <strong>Douglas Zulim</strong>, a Quality Assurance Engineer based in <strong>Sorocaba-SP, Brazil</strong> with <strong>five years</strong> of experience in automated and manual testing, ensuring software reliability and user satisfaction.
           </p>
           <p data-i18n="about.p2">
             My journey started in technical support at <strong>Eduzz</strong>, where I quickly progressed from Junior Support Analyst to QA Analyst — driven by a deep curiosity for how systems break. Today I specialize in building automated test suites with <strong>Playwright</strong>, <strong>Selenium</strong>, and <strong>Postman</strong>, covering API, Web, and Desktop layers.
           </p>
           <p data-i18n="about.p3">
-            I work within agile methodologies (<strong>Scrum/Kanban</strong>), collaborating closely with developers and Product Owners to define acceptance criteria and quality standards. I use <strong>TypeScript</strong>, <strong>Python</strong>, and <strong>SQL</strong> daily, and integrate tests into CI/CD pipelines using <strong>Git</strong> and <strong>Jira</strong>.
+            I work within agile methodologies (<strong>Scrum/Kanban</strong>), collaborating closely with developers and Product Owners to define acceptance criteria and quality standards. I use <strong>TypeScript</strong>, <strong>Python</strong>, and <strong>SQL</strong>, with <strong>Git</strong> and <strong>Jira</strong> supporting versioning, defect tracking, and CI/CD flows.
           </p>
 
           <div class="about-stats stagger-children">
             <div class="stat-item">
-              <div class="stat-number" data-count="4" data-suffix="+">0</div>
-              <div class="stat-label" data-i18n="about.statYears">Years Experience</div>
+              <div class="stat-number" data-count="5" data-suffix="">0</div>
+              <div class="stat-label" data-i18n="about.statYears">Years in QA</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number" data-count="1500" data-suffix="+">0</div>
-              <div class="stat-label" data-i18n="about.statTests">Tests Automated</div>
+              <div class="stat-number" data-count="3" data-suffix="">0</div>
+              <div class="stat-label" data-i18n="about.statSurfaces">Test Surfaces</div>
             </div>
             <div class="stat-item">
-              <div class="stat-number" data-count="5" data-suffix="+">0</div>
-              <div class="stat-label" data-i18n="about.statEduzz">Years at Eduzz</div>
+              <div class="stat-number" data-count="3" data-suffix="">0</div>
+              <div class="stat-label" data-i18n="about.statTools">Core Automation Tools</div>
             </div>
           </div>
         </div>
@@ -168,46 +211,35 @@
               <span class="terminal-dot red"></span>
               <span class="terminal-dot yellow"></span>
               <span class="terminal-dot green"></span>
-              <span class="terminal-title">douglas@qa ~ /tests</span>
+              <span class="terminal-title">quality-profile.ts</span>
             </div>
             <div class="terminal-body">
               <div class="terminal-line">
-                <span class="terminal-prompt">$ </span>
-                <span class="terminal-command">pytest --run-suite regression</span>
+                <span class="terminal-command"><span class="terminal-accent">const</span> qualityProfile = {</span>
               </div>
               <div class="terminal-line terminal-output">
-                Collecting tests...
+                experience: <span class="terminal-success">'5 years'</span>,
               </div>
               <div class="terminal-line terminal-output">
-                Running 247 test cases...
-              </div>
-              <div class="terminal-line terminal-output">&nbsp;</div>
-              <div class="terminal-line terminal-output">
-                <span class="terminal-success">✓</span> test_login_flow <span class="terminal-accent">(0.8s)</span>
+                surfaces: [<span class="terminal-success">'API'</span>, <span class="terminal-success">'Web'</span>, <span class="terminal-success">'Desktop'</span>],
               </div>
               <div class="terminal-line terminal-output">
-                <span class="terminal-success">✓</span> test_checkout_process <span class="terminal-accent">(1.2s)</span>
+                automation: [<span class="terminal-success">'Playwright'</span>, <span class="terminal-success">'Postman'</span>,
               </div>
               <div class="terminal-line terminal-output">
-                <span class="terminal-success">✓</span> test_api_response_validation <span class="terminal-accent">(0.3s)</span>
+                &nbsp;&nbsp;<span class="terminal-success">'Selenium'</span>],
               </div>
               <div class="terminal-line terminal-output">
-                <span class="terminal-success">✓</span> test_payment_gateway <span class="terminal-accent">(2.1s)</span>
+                languages: [<span class="terminal-success">'TypeScript'</span>, <span class="terminal-success">'Python'</span>, <span class="terminal-success">'SQL'</span>],
               </div>
               <div class="terminal-line terminal-output">
-                <span class="terminal-success">✓</span> test_user_registration <span class="terminal-accent">(0.6s)</span>
+                delivery: [<span class="terminal-success">'Git'</span>, <span class="terminal-success">'Jira'</span>, <span class="terminal-success">'CI/CD'</span>],
               </div>
-              <div class="terminal-line terminal-output">&nbsp;</div>
               <div class="terminal-line terminal-output">
-                <span class="terminal-success">═══ 247 passed</span> in <span class="terminal-accent">42.3s</span> ═══
+                mindset: <span class="terminal-success">'quality throughout delivery'</span>
               </div>
-              <div class="terminal-line terminal-output">&nbsp;</div>
               <div class="terminal-line">
-                <span class="terminal-prompt">$ </span>
-                <span class="terminal-command">echo "All green. Ship it! 🚀"</span>
-              </div>
-              <div class="terminal-line terminal-output">
-                All green. Ship it! 🚀
+                <span class="terminal-command">};</span><span class="terminal-caret" aria-hidden="true"></span>
               </div>
             </div>
           </div>
@@ -852,7 +884,6 @@
     </div>
   </section>
 
-
   <!-- ============================
        8. CONTACT
        ============================ -->
@@ -876,7 +907,7 @@
             <span>douglaszulim@gmail.com</span>
           </a>
 
-          <a href="https://linkedin.com/in/douglas-zulim-894287a6" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <a href="https://www.linkedin.com/in/douglaszulim/" target="_blank" rel="noopener noreferrer" class="contact-link">
             <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             <span>LinkedIn</span>
           </a>
@@ -935,6 +966,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ============================
        FOOTER

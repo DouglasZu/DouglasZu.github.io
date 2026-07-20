@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="44" viewBox="0 0 720 44" role="img" aria-labelledby="title description">
+  <title id="title">Quality engineering focus</title>
+  <desc id="description">Quality strategy, test automation, API quality and continuous delivery.</desc>
+  <style>
+    text { fill: #334155; font: 500 18px ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .phrase { opacity: 0; animation: show 12s infinite; }
+    .p1 { animation-delay: 0s; }
+    .p2 { animation-delay: 3s; }
+    .p3 { animation-delay: 6s; }
+    .p4 { animation-delay: 9s; }
+    .cursor { fill: #6366f1; animation: blink 1s steps(1) infinite; }
+    @keyframes show { 0%, 22% { opacity: 1 } 25%, 100% { opacity: 0 } }
+    @keyframes blink { 0%, 48% { opacity: 1 } 49%, 100% { opacity: 0 } }
+    @media (prefers-color-scheme: dark) { text { fill: #cbd5e1; } .cursor { fill: #a5b4fc; } }
+    @media (prefers-reduced-motion: reduce) {
+      .phrase { animation: none; opacity: 0; }
+      .p1 { opacity: 1; }
+      .cursor { display: none; }
+    }
+  </style>
+  <g text-anchor="middle">
+    <text class="phrase p1" x="350" y="29">Quality strategy · risk before scripts</text>
+    <text class="phrase p2" x="350" y="29">Test automation · feedback at delivery speed</text>
+    <text class="phrase p3" x="350" y="29">API quality · contracts, data and failure paths</text>
+    <text class="phrase p4" x="350" y="29">Continuous delivery · confidence with evidence</text>
+  </g>
+  <rect class="cursor" x="704" y="13" width="2" height="21" rx="1"/>
+</svg>

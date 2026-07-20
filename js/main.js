@@ -21,7 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
   new Navigation();
   new ScrollAnimations();
   new Filters();
-  new ParticleSystem('hero-particles');
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    new ParticleSystem('hero-particles');
+  }
 
   // ---- Typewriter Effect ----
   initTypewriter();
@@ -40,14 +42,14 @@ function initTypewriter() {
   const element = document.getElementById('typewriter');
   if (!element) return;
 
-  // Get initial language from localStorage or default to 'en'
-  const currentLang = localStorage.getItem('lang') || 'en';
+  // Use Portuguese on the first visit and preserve later language choices.
+  const currentLang = localStorage.getItem('portfolio-language') || 'pt-br';
   let roles = (window.typewriterRoles && window.typewriterRoles[currentLang]) || [
-    'QA Engineer',
-    'Test Automation Engineer',
-    'Quality Advocate',
+    'Engenheiro de QA',
+    'Automação de Testes',
+    'Defensor da Qualidade',
     'SDET',
-    'Bug Hunter',
+    'Caçador de Bugs',
   ];
 
   let roleIndex = 0;
