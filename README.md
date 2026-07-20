@@ -1,5 +1,7 @@
 # Douglas Zulim — QA Engineer Portfolio
 
+> **GitHub Profile package:** [`github-profile/`](./github-profile/) — deploy-ready README, local SVG assets, metrics automation, workflows and QA repository templates.
+
 > 🌐 **Live:** [douglaszu.github.io](https://douglaszu.github.io)
 
 A modern, high-end personal portfolio website showcasing QA Engineering expertise, test automation projects, and quality assurance culture.

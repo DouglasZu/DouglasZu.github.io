@@ -1,0 +1,26 @@
+name: Content correction
+description: Report inaccurate, outdated or unsupported profile information.
+title: "content: "
+labels: [content]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping keep this profile accurate and evidence-based.
+  - type: textarea
+    id: current
+    attributes:
+      label: Current content
+      description: Quote the exact sentence or identify the section.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction
+    validations:
+      required: true
+  - type: input
+    id: evidence
+    attributes:
+      label: Public evidence URL
+      description: Repository, credential, article or other source when applicable.

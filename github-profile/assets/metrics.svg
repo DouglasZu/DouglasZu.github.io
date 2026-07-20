@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="250" viewBox="0 0 1200 250" role="img" aria-labelledby="title description">
+  <title id="title">GitHub metrics setup state</title>
+  <desc id="description">Run the included Profile metrics workflow after publishing to replace this setup state with current public GitHub data.</desc>
+  <style>
+    .bg { fill:#f8fafc; stroke:#cbd5e1; } .title { fill:#0f172a; font:700 24px system-ui,-apple-system,Segoe UI,sans-serif; } .copy { fill:#475569; font:400 16px system-ui,-apple-system,Segoe UI,sans-serif; } .meta { fill:#6366f1; font:600 13px ui-monospace,SFMono-Regular,Consolas,monospace; letter-spacing:1px; }
+    @media (prefers-color-scheme:dark) { .bg{fill:#0d1117;stroke:#30363d}.title{fill:#f0f6fc}.copy{fill:#8b949e}.meta{fill:#a5b4fc} }
+  </style>
+  <rect x="1" y="1" width="1198" height="248" rx="22" class="bg"/>
+  <g transform="translate(64 58)">
+    <circle cx="26" cy="26" r="24" fill="#6366f1" fill-opacity=".12" stroke="#6366f1"/>
+    <path d="M16 27h20M20 19l-8 8 8 8M32 19l8 8-8 8" fill="none" stroke="#6366f1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="76" y="18" class="meta">PROFILE METRICS</text>
+    <text x="76" y="54" class="title">Ready for the first automated update</text>
+    <text x="76" y="88" class="copy">Run Actions → Profile metrics after publishing DouglasZu/DouglasZu.</text>
+    <text x="76" y="116" class="copy">This card will show public contributions, repositories, pull requests, issues, stars and languages.</text>
+  </g>
+</svg>

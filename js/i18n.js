@@ -4,7 +4,8 @@
 
 class I18n {
   constructor() {
-    this.currentLang = localStorage.getItem('lang') || 'en';
+    this.storageKey = 'portfolio-language';
+    this.currentLang = localStorage.getItem(this.storageKey) || 'pt-br';
     this.toggleBtn = document.getElementById('lang-toggle');
     this.toggleLabel = document.getElementById('lang-toggle-label');
     this.init();
@@ -12,8 +13,8 @@ class I18n {
 
   init() {
     // Set initial language
-    document.documentElement.setAttribute('lang', this.currentLang);
-    this.applyTranslations();
+    this.updateDocumentLanguage();
+    this.applyTranslations(false);
     this.updateToggleButton();
 
     // Bind toggle
@@ -24,10 +25,14 @@ class I18n {
 
   toggle() {
     this.currentLang = this.currentLang === 'en' ? 'pt-br' : 'en';
-    localStorage.setItem('lang', this.currentLang);
-    document.documentElement.setAttribute('lang', this.currentLang);
-    this.applyTranslations();
+    localStorage.setItem(this.storageKey, this.currentLang);
+    this.updateDocumentLanguage();
+    this.applyTranslations(true);
     this.updateToggleButton();
+  }
+
+  updateDocumentLanguage() {
+    document.documentElement.setAttribute('lang', this.currentLang === 'pt-br' ? 'pt-BR' : 'en');
   }
 
   updateToggleButton() {
@@ -41,19 +46,23 @@ class I18n {
     }
   }
 
-  applyTranslations() {
+  applyTranslations(animate = true) {
     const elements = document.querySelectorAll('[data-i18n]');
     elements.forEach(el => {
       const key = el.getAttribute('data-i18n');
       const translation = this.getTranslation(key);
       if (translation !== undefined) {
-        // Add a tiny fade transition
-        el.style.transition = 'opacity 0.2s ease';
-        el.style.opacity = '0';
-        setTimeout(() => {
+        if (animate) {
+          el.style.transition = 'opacity 0.2s ease';
+          el.style.opacity = '0';
+          setTimeout(() => {
+            el.innerHTML = translation;
+            el.style.opacity = '1';
+          }, 150);
+        } else {
           el.innerHTML = translation;
           el.style.opacity = '1';
-        }, 150);
+        }
       }
     });
 
@@ -115,22 +124,31 @@ const translations = {
     hero: {
       label: 'Sorocaba-SP, Brasil · Open to opportunities',
       greeting: 'Hi, I\'m <span class="text-gradient">Douglas Zulim</span>',
-      tagline: 'I break things before users do. 4+ years turning chaos into confidence through test automation with Playwright, Selenium, and a relentless pursuit of quality.',
+      tagline: 'I break things before users do. Five years turning chaos into confidence through test automation with Playwright, Selenium, and a relentless pursuit of quality.',
       btnProjects: 'View Projects',
       btnContact: 'Get in Touch',
       scroll: 'Scroll',
+      proofEyebrow: 'QUALITY SIGNAL',
+      proofTitle: 'Confidence before release.',
+      proofExperience: 'Experience',
+      proofExperienceValue: '5 years',
+      proofCoverage: 'Coverage',
+      proofAutomation: 'Automation',
+      proofStep1: 'Understand risk',
+      proofStep2: 'Automate wisely',
+      proofStep3: 'Ship with evidence',
     },
 
     // About Section
     about: {
       label: '// About Me',
       title: 'Building Quality <span class="text-gradient">Into Every Line</span>',
-      p1: 'I\'m <strong>Douglas Zulim</strong>, a Quality Assurance Engineer based in <strong>Sorocaba-SP, Brasil</strong> with over <strong>4 years</strong> of experience in automated and manual testing, ensuring software reliability and user satisfaction.',
+      p1: 'I\'m <strong>Douglas Zulim</strong>, a Quality Assurance Engineer based in <strong>Sorocaba-SP, Brazil</strong> with <strong>five years</strong> of experience in automated and manual testing, ensuring software reliability and user satisfaction.',
       p2: 'My journey started in technical support at <strong>Eduzz</strong>, where I quickly progressed from Junior Support Analyst to QA Analyst — driven by a deep curiosity for how systems break. Today I specialize in building automated test suites with <strong>Playwright</strong>, <strong>Selenium</strong>, and <strong>Postman</strong>, covering API, Web, and Desktop layers.',
-      p3: 'I work within agile methodologies (<strong>Scrum/Kanban</strong>), collaborating closely with developers and Product Owners to define acceptance criteria and quality standards. I use <strong>TypeScript</strong>, <strong>Python</strong>, and <strong>SQL</strong> daily, and integrate tests into CI/CD pipelines using <strong>Git</strong> and <strong>Jira</strong>.',
-      statYears: 'Years Experience',
-      statTests: 'Tests Automated',
-      statEduzz: 'Years at Eduzz',
+      p3: 'I work within agile methodologies (<strong>Scrum/Kanban</strong>), collaborating closely with developers and Product Owners to define acceptance criteria and quality standards. I use <strong>TypeScript</strong>, <strong>Python</strong>, and <strong>SQL</strong>, with <strong>Git</strong> and <strong>Jira</strong> supporting versioning, defect tracking, and CI/CD flows.',
+      statYears: 'Years in QA',
+      statSurfaces: 'Test Surfaces',
+      statTools: 'Core Automation Tools',
     },
 
     // Skills Section
@@ -300,22 +318,31 @@ const translations = {
     hero: {
       label: 'Sorocaba-SP, Brasil · Aberto a oportunidades',
       greeting: 'Olá, eu sou <span class="text-gradient">Douglas Zulim</span>',
-      tagline: 'Eu quebro as coisas antes dos usuários. 4+ anos transformando caos em confiança através de automação de testes com Playwright, Selenium e uma busca incansável por qualidade.',
+      tagline: 'Eu quebro as coisas antes dos usuários. Cinco anos transformando caos em confiança através de automação de testes com Playwright, Selenium e uma busca incansável por qualidade.',
       btnProjects: 'Ver Projetos',
       btnContact: 'Entre em Contato',
       scroll: 'Rolar',
+      proofEyebrow: 'SINAL DE QUALIDADE',
+      proofTitle: 'Confiança antes da release.',
+      proofExperience: 'Experiência',
+      proofExperienceValue: '5 anos',
+      proofCoverage: 'Cobertura',
+      proofAutomation: 'Automação',
+      proofStep1: 'Entender o risco',
+      proofStep2: 'Automatizar com critério',
+      proofStep3: 'Entregar com evidências',
     },
 
     // Seção Sobre
     about: {
       label: '// Sobre Mim',
       title: 'Construindo Qualidade <span class="text-gradient">Em Cada Linha</span>',
-      p1: 'Eu sou <strong>Douglas Zulim</strong>, Engenheiro de Qualidade baseado em <strong>Sorocaba-SP, Brasil</strong> com mais de <strong>4 anos</strong> de experiência em testes automatizados e manuais, garantindo a confiabilidade do software e a satisfação do usuário.',
+      p1: 'Eu sou <strong>Douglas Zulim</strong>, Engenheiro de Qualidade baseado em <strong>Sorocaba-SP, Brasil</strong> com <strong>cinco anos</strong> de experiência em testes automatizados e manuais, garantindo a confiabilidade do software e a satisfação do usuário.',
       p2: 'Minha jornada começou no suporte técnico na <strong>Eduzz</strong>, onde rapidamente progredi de Analista de Suporte Júnior para Analista de QA — impulsionado por uma curiosidade profunda sobre como os sistemas falham. Hoje me especializo em construir suítes de testes automatizados com <strong>Playwright</strong>, <strong>Selenium</strong> e <strong>Postman</strong>, cobrindo camadas de API, Web e Desktop.',
-      p3: 'Trabalho com metodologias ágeis (<strong>Scrum/Kanban</strong>), colaborando de perto com desenvolvedores e Product Owners para definir critérios de aceite e padrões de qualidade. Uso <strong>TypeScript</strong>, <strong>Python</strong> e <strong>SQL</strong> diariamente, e integro testes em pipelines CI/CD usando <strong>Git</strong> e <strong>Jira</strong>.',
-      statYears: 'Anos de Experiência',
-      statTests: 'Testes Automatizados',
-      statEduzz: 'Anos na Eduzz',
+      p3: 'Trabalho com metodologias ágeis (<strong>Scrum/Kanban</strong>), colaborando de perto com desenvolvedores e Product Owners para definir critérios de aceite e padrões de qualidade. Uso <strong>TypeScript</strong>, <strong>Python</strong> e <strong>SQL</strong>, com <strong>Git</strong> e <strong>Jira</strong> apoiando versionamento, gestão de defeitos e fluxos de CI/CD.',
+      statYears: 'Anos em QA',
+      statSurfaces: 'Superfícies Testadas',
+      statTools: 'Ferramentas de Automação',
     },
 
     // Seção Habilidades

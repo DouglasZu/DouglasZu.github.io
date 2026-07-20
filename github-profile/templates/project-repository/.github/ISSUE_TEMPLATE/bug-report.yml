@@ -1,0 +1,36 @@
+name: Bug report
+description: Report reproducible behavior that differs from the expected result.
+title: "bug: "
+labels: [bug, triage]
+body:
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include sanitized data, command, environment and frequency.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Paste sanitized logs or attach a screenshot/trace with no credentials.
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Data safety
+      options:
+        - label: I confirm this report contains no credentials, private customer data or production secrets.
+          required: true

@@ -1,0 +1,50 @@
+{
+  "data": {
+    "user": {
+      "followers": { "totalCount": 3 },
+      "repositories": {
+        "totalCount": 4,
+        "nodes": [
+          {
+            "stargazerCount": 2,
+            "languages": {
+              "edges": [
+                { "size": 700, "node": { "name": "TypeScript", "color": "#3178c6" } },
+                { "size": 300, "node": { "name": "JavaScript", "color": "#f1e05a" } }
+              ]
+            }
+          },
+          {
+            "stargazerCount": 1,
+            "languages": {
+              "edges": [
+                { "size": 500, "node": { "name": "Python", "color": "#3572A5" } },
+                { "size": 200, "node": { "name": "HTML", "color": "#e34c26" } }
+              ]
+            }
+          }
+        ]
+      },
+      "contributionsCollection": {
+        "totalCommitContributions": 42,
+        "totalIssueContributions": 7,
+        "totalPullRequestContributions": 12,
+        "restrictedContributionsCount": 0,
+        "contributionCalendar": {
+          "totalContributions": 86,
+          "weeks": [
+            { "contributionDays": [
+              { "contributionCount": 0, "date": "2026-07-12", "weekday": 0 },
+              { "contributionCount": 1, "date": "2026-07-13", "weekday": 1 },
+              { "contributionCount": 3, "date": "2026-07-14", "weekday": 2 },
+              { "contributionCount": 2, "date": "2026-07-15", "weekday": 3 },
+              { "contributionCount": 5, "date": "2026-07-16", "weekday": 4 },
+              { "contributionCount": 1, "date": "2026-07-17", "weekday": 5 },
+              { "contributionCount": 0, "date": "2026-07-18", "weekday": 6 }
+            ] }
+          ]
+        }
+      }
+    }
+  }
+}

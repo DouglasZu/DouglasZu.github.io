@@ -1,0 +1,24 @@
+name: Broken profile experience
+description: Report a broken link, missing image or readability problem.
+title: "fix: "
+labels: [bug]
+body:
+  - type: dropdown
+    id: problem
+    attributes:
+      label: Problem type
+      options:
+        - Broken link
+        - Missing image
+        - Light/dark theme readability
+        - Mobile layout
+        - Accessibility
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Include the affected section, browser/theme and steps to reproduce.
+    validations:
+      required: true
