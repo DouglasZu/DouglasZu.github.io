@@ -1,508 +1,313 @@
-/* ============================================
-   I18N — Internationalization (PT-BR / EN)
-   ============================================ */
-
 class I18n {
   constructor() {
     this.storageKey = 'portfolio-language';
     this.currentLang = localStorage.getItem(this.storageKey) || 'pt-br';
     this.toggleBtn = document.getElementById('lang-toggle');
     this.toggleLabel = document.getElementById('lang-toggle-label');
+    window.i18nInstance = this;
     this.init();
   }
 
   init() {
-    // Set initial language
-    this.updateDocumentLanguage();
-    this.applyTranslations(false);
+    this.applyTranslations();
     this.updateToggleButton();
-
-    // Bind toggle
-    if (this.toggleBtn) {
-      this.toggleBtn.addEventListener('click', () => this.toggle());
-    }
+    this.toggleBtn?.addEventListener('click', () => this.toggle());
   }
 
   toggle() {
     this.currentLang = this.currentLang === 'en' ? 'pt-br' : 'en';
     localStorage.setItem(this.storageKey, this.currentLang);
-    this.updateDocumentLanguage();
-    this.applyTranslations(true);
+    this.applyTranslations();
     this.updateToggleButton();
   }
 
-  updateDocumentLanguage() {
-    document.documentElement.setAttribute('lang', this.currentLang === 'pt-br' ? 'pt-BR' : 'en');
+  applyTranslations() {
+    document.documentElement.lang = this.currentLang === 'pt-br' ? 'pt-BR' : 'en';
+    document.title = this.getTranslation('meta.title');
+
+    const description = this.getTranslation('meta.description');
+    document.querySelector('meta[name="description"]')?.setAttribute('content', description);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', description);
+    document.querySelector('meta[property="og:locale"]')?.setAttribute('content', this.currentLang === 'pt-br' ? 'pt_BR' : 'en_US');
+
+    document.querySelectorAll('[data-i18n]').forEach((element) => {
+      const value = this.getTranslation(element.dataset.i18n);
+      if (value !== undefined) element.innerHTML = value;
+    });
+
+    document.querySelectorAll('[data-i18n-aria]').forEach((element) => {
+      const value = this.getTranslation(element.dataset.i18nAria);
+      if (value !== undefined) element.setAttribute('aria-label', value);
+    });
+
+    document.querySelectorAll('[data-i18n-tooltip]').forEach((element) => {
+      const value = this.getTranslation(element.dataset.i18nTooltip);
+      if (value !== undefined) element.dataset.tooltip = value;
+    });
+
+    document.dispatchEvent(new CustomEvent('languagechange', { detail: { language: this.currentLang } }));
   }
 
   updateToggleButton() {
-    if (this.toggleLabel) {
-      this.toggleLabel.textContent = this.currentLang === 'en' ? 'PT' : 'EN';
-    }
-    if (this.toggleBtn) {
-      this.toggleBtn.setAttribute('aria-label',
-        this.currentLang === 'en' ? 'Switch to Portuguese' : 'Mudar para Inglês'
-      );
-    }
-  }
-
-  applyTranslations(animate = true) {
-    const elements = document.querySelectorAll('[data-i18n]');
-    elements.forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      const translation = this.getTranslation(key);
-      if (translation !== undefined) {
-        if (animate) {
-          el.style.transition = 'opacity 0.2s ease';
-          el.style.opacity = '0';
-          setTimeout(() => {
-            el.innerHTML = translation;
-            el.style.opacity = '1';
-          }, 150);
-        } else {
-          el.innerHTML = translation;
-          el.style.opacity = '1';
-        }
-      }
-    });
-
-    // Handle placeholder attributes
-    const placeholderEls = document.querySelectorAll('[data-i18n-placeholder]');
-    placeholderEls.forEach(el => {
-      const key = el.getAttribute('data-i18n-placeholder');
-      const translation = this.getTranslation(key);
-      if (translation !== undefined) {
-        el.setAttribute('placeholder', translation);
-      }
-    });
-
-    // Handle aria-label attributes
-    const ariaEls = document.querySelectorAll('[data-i18n-aria]');
-    ariaEls.forEach(el => {
-      const key = el.getAttribute('data-i18n-aria');
-      const translation = this.getTranslation(key);
-      if (translation !== undefined) {
-        el.setAttribute('aria-label', translation);
-      }
-    });
-
-    // Update typewriter roles
-    if (window.typewriterInstance) {
-      window.typewriterInstance.updateRoles(this.currentLang);
-    }
+    if (this.toggleLabel) this.toggleLabel.textContent = this.currentLang === 'en' ? 'PT' : 'EN';
+    if (this.toggleBtn) this.toggleBtn.setAttribute('aria-label', this.getTranslation('accessibility.languageToggle'));
   }
 
   getTranslation(key) {
-    const keys = key.split('.');
-    let value = translations[this.currentLang];
-    for (const k of keys) {
-      if (value === undefined) return undefined;
-      value = value[k];
-    }
-    return value;
+    return key.split('.').reduce((value, part) => value?.[part], translations[this.currentLang]);
   }
 }
 
-/* ============================================
-   TRANSLATION DICTIONARIES
-   ============================================ */
-
 const translations = {
-  en: {
-    // Navigation
-    nav: {
-      about: 'About',
-      skills: 'Skills',
-      projects: 'Projects',
-      artifacts: 'QA Artifacts',
-      experience: 'Experience',
-      mindset: 'How I Test',
-      contact: 'Contact',
-    },
-
-    // Hero Section
-    hero: {
-      label: 'Sorocaba-SP, Brasil · Open to opportunities',
-      greeting: 'Hi, I\'m <span class="text-gradient">Douglas Zulim</span>',
-      tagline: 'I break things before users do. Five years turning chaos into confidence through test automation with Playwright, Selenium, and a relentless pursuit of quality.',
-      btnProjects: 'View Projects',
-      btnContact: 'Get in Touch',
-      scroll: 'Scroll',
-      proofEyebrow: 'QUALITY SIGNAL',
-      proofTitle: 'Confidence before release.',
-      proofExperience: 'Experience',
-      proofExperienceValue: '5 years',
-      proofCoverage: 'Coverage',
-      proofAutomation: 'Automation',
-      proofStep1: 'Understand risk',
-      proofStep2: 'Automate wisely',
-      proofStep3: 'Ship with evidence',
-    },
-
-    // About Section
-    about: {
-      label: '// About Me',
-      title: 'Building Quality <span class="text-gradient">Into Every Line</span>',
-      p1: 'I\'m <strong>Douglas Zulim</strong>, a Quality Assurance Engineer based in <strong>Sorocaba-SP, Brazil</strong> with <strong>five years</strong> of experience in automated and manual testing, ensuring software reliability and user satisfaction.',
-      p2: 'My journey started in technical support at <strong>Eduzz</strong>, where I quickly progressed from Junior Support Analyst to QA Analyst — driven by a deep curiosity for how systems break. Today I specialize in building automated test suites with <strong>Playwright</strong>, <strong>Selenium</strong>, and <strong>Postman</strong>, covering API, Web, and Desktop layers.',
-      p3: 'I work within agile methodologies (<strong>Scrum/Kanban</strong>), collaborating closely with developers and Product Owners to define acceptance criteria and quality standards. I use <strong>TypeScript</strong>, <strong>Python</strong>, and <strong>SQL</strong>, with <strong>Git</strong> and <strong>Jira</strong> supporting versioning, defect tracking, and CI/CD flows.',
-      statYears: 'Years in QA',
-      statSurfaces: 'Test Surfaces',
-      statTools: 'Core Automation Tools',
-    },
-
-    // Skills Section
-    skills: {
-      label: '// Tech Stack',
-      title: 'Tools & <span class="text-gradient">Technologies</span>',
-      subtitle: 'The technologies I use to deliver quality at scale.',
-      catAutomation: '🤖 Test Automation',
-      catLanguages: '💻 Languages',
-      catApi: '🔗 API & Performance',
-      catCicd: '⚙️ CI/CD & DevOps',
-      catDb: '📊 Databases & Monitoring',
-    },
-
-    // Projects Section
-    projects: {
-      label: '// Featured Work',
-      title: 'Projects & <span class="text-gradient">Case Studies</span>',
-      subtitle: 'Real-world QA projects showcasing automation frameworks, testing strategies, and quality culture.',
-      filterAll: 'All',
-      filterAutomation: 'Automation',
-      filterApi: 'API',
-      filterCicd: 'CI/CD',
-      filterPerformance: 'Performance',
-      project1Title: 'E2E Automation Framework',
-      project1Desc: 'A scalable end-to-end test automation framework built with Cypress and TypeScript. Implements Page Object Model, custom commands, and parallel execution. Reduced regression testing time by 70%.',
-      project2Title: 'API Testing Suite',
-      project2Desc: 'Comprehensive REST API testing suite using Python and Pytest. Features schema validation, data-driven tests, and automated contract testing. Covers 150+ endpoints with 98% reliability.',
-      project3Title: 'CI/CD Quality Pipeline',
-      project3Desc: 'End-to-end CI/CD pipeline integrating automated tests at every stage. Configured Jenkins and GitHub Actions to run unit, integration, and E2E tests with automated reporting and Slack notifications.',
-      project4Title: 'Performance Testing Dashboard',
-      project4Desc: 'Load and stress testing infrastructure using k6 with real-time monitoring via Grafana dashboards. Identified critical bottlenecks that improved API response times by 40% under load.',
-    },
-
-    // QA Artifacts Section
-    artifacts: {
-      label: '// QA Artifacts',
-      title: 'Real <span class="text-gradient">QA Documentation</span>',
-      subtitle: 'Examples of structured QA work — from test cases to bug reports.',
-      tabTestCases: 'Test Cases',
-      tabBugReports: 'Bug Reports',
-      tabTestPlans: 'Test Plans',
-      tabReports: 'Automation Reports',
-      // Test Cases Table
-      tcTitle: '🧪 Login Flow — Test Cases',
-      tcBadge: '12 Cases',
-      thId: 'ID',
-      thDescription: 'Description',
-      thPriority: 'Priority',
-      thStatus: 'Status',
-      tc001: 'Valid credentials login',
-      tc002: 'Invalid password error message',
-      tc003: 'Empty fields validation',
-      tc004: 'Account lockout after 5 failed attempts',
-      tc005: 'Remember me functionality',
-      tc006: 'SSO / OAuth2 redirect flow',
-      statusPass: '✓ Pass',
-      // Bug Reports Table
-      bugTitle: '🐛 Bug Reports — Sprint 42',
-      bugBadge: '3 Critical',
-      thSummary: 'Summary',
-      thSeverity: 'Severity',
-      bug1847: 'Payment fails silently on timeout > 30s',
-      bug1852: 'Cart total doesn\'t update after coupon removal',
-      bug1856: 'Race condition in concurrent order placement',
-      bug1861: 'Search results inconsistent with special chars',
-      bug1865: 'Session token not refreshed on password change',
-      statusFixed: '✓ Fixed',
-      statusInProgress: '⚠ In Progress',
-      // Test Plans
-      tpTitle: '📋 Test Plan — E-Commerce Release v3.2',
-      tpBadge: 'Active',
-      tpObjectiveLabel: 'Objective:',
-      tpObjective: 'Validate all critical user journeys for the v3.2 release including new payment provider integration and redesigned checkout flow.',
-      tpScopeLabel: 'Scope:',
-      tpScope1: '✅ Functional testing — checkout, payments, cart',
-      tpScope2: '✅ Integration testing — payment gateway API',
-      tpScope3: '✅ Regression testing — existing features',
-      tpScope4: '✅ Performance testing — checkout under load',
-      tpScope5: '⬜ Security testing — PCI compliance checks',
-      tpMetricsLabel: 'Test Metrics:',
-      tpMetric1: 'Total test cases: <span style="color: var(--color-primary);">247</span>',
-      tpMetric2: 'Automated: <span style="color: var(--color-success);">189 (76%)</span>',
-      tpMetric3: 'Manual: <span style="color: var(--color-warning);">58 (24%)</span>',
-      tpMetric4: 'Pass rate: <span style="color: var(--color-success);">96.4%</span>',
-      // Automation Reports
-      arTitle: '📊 Automation Report — Nightly Run',
-      arBadge: 'Passed',
-      arTotalTests: 'Total Tests',
-      arPassed: 'Passed',
-      arFailed: 'Failed',
-      arSkipped: 'Skipped',
-      arFooter: 'Execution time: 42.3s · Environment: staging · Browser: Chrome 120',
-    },
-
-    // Experience Section
-    experience: {
-      label: '// Career Journey',
-      title: 'Professional <span class="text-gradient">Experience</span>',
-      job1Date: '06/2021 — 06/2026',
-      job1Title: 'Quality Assurance Analyst',
-      job1Company: 'Eduzz · Full-time',
-      job1Desc: 'Development and maintenance of automated tests with Playwright and Postman for API and UI (Web and Desktop) validation. Implementation of integration and regression tests, ensuring release stability. Active participation in the agile development cycle (Scrum), collaborating with developers and POs to define acceptance and quality criteria. Use of Git for versioning and continuous integration (CI/CD). Support in analyzing and solving bugs, using SQL to investigate database issues.',
-      job2Date: '01/2021 — 05/2021',
-      job2Title: 'Mid-Level Support Analyst',
-      job2Company: 'Eduzz · Full-time',
-      job2Desc: 'Technical customer support, analyzing cases to open improvements, incidents, and problems. Analyzes performed using SQL to investigate issues. Opening Jira cards and participating in defect meetings to address identified problems.',
-      job3Date: '09/2019 — 12/2020',
-      job3Title: 'Junior Support Analyst',
-      job3Company: 'Eduzz · Full-time',
-      job3Desc: 'Customer service via email and chat. Configuration of pixels, webhooks, and platform products.',
-    },
-
-    // How I Test Section
-    mindset: {
-      label: '// QA Philosophy',
-      title: 'How I <span class="text-gradient">Approach Quality</span>',
-      subtitle: 'Quality is not just about finding bugs — it\'s about building confidence in every release.',
-      step1Title: 'Understand',
-      step1Desc: 'Deep-dive into requirements, user stories, and acceptance criteria. I ask the right questions before writing a single test — understanding the "why" behind features drives smarter testing.',
-      step2Title: 'Plan Strategically',
-      step2Desc: 'Design test strategies that balance risk with coverage. I prioritize what matters most — critical paths, edge cases, and integration points — using risk-based testing approaches.',
-      step3Title: 'Automate Smartly',
-      step3Desc: 'Not everything needs automation. I automate regression, smoke tests, and repetitive validations while keeping exploratory testing manual. The right tool for the right job.',
-      step4Title: 'Integrate Early',
-      step4Desc: 'Shift-left testing — I embed quality checks into the CI/CD pipeline from day one. Every commit triggers automated tests, catching issues when they\'re cheapest to fix.',
-      step5Title: 'Monitor & Improve',
-      step5Desc: 'Quality doesn\'t stop at deployment. I set up monitoring, track test metrics, and continuously refine the testing process based on real production data and team feedback.',
-    },
-
-    // Contact Section
-    contact: {
-      label: '// Let\'s Connect',
-      title: 'Get in <span class="text-gradient">Touch</span>',
-      subtitle: 'Interested in working together? I\'m always open to discussing new projects, opportunities, and ideas.',
-      reachOut: 'Reach Out',
-      reachOutDesc: 'Whether you have a question or just want to say hi, feel free to reach out. I\'ll get back to you as soon as possible.',
-      formName: 'Name',
-      formEmail: 'Email',
-      formMessage: 'Message',
-      formNamePlaceholder: 'Your name',
-      formEmailPlaceholder: 'your@email.com',
-      formMessagePlaceholder: 'Tell me about your project or opportunity...',
-      formSubmit: 'Send Message',
-    },
-
-    // Footer
-    footer: {
-      built: 'Built with <span class="heart">❤</span> by <strong>Douglas Zulim</strong> · 2026',
-      quote: 'Quality is not an act, it is a habit. — Aristotle',
-    },
-  },
-
   'pt-br': {
-    // Navegação
-    nav: {
-      about: 'Sobre',
-      skills: 'Habilidades',
-      projects: 'Projetos',
-      artifacts: 'Artefatos QA',
-      experience: 'Experiência',
-      mindset: 'Como Testo',
-      contact: 'Contato',
+    meta: {
+      title: 'Douglas Zulim — QA Engineer',
+      description: 'Portfólio de Douglas Zulim, QA Engineer com cinco anos de experiência em automação de testes, testes de API, Playwright, TypeScript, SQL e CI/CD.'
     },
-
-    // Seção Hero
+    accessibility: {
+      skip: 'Pular para o conteúdo principal',
+      primaryNav: 'Navegação principal',
+      backToTop: 'Douglas Zulim — voltar ao início',
+      themeToggle: 'Alternar tema',
+      openMenu: 'Abrir menu de navegação',
+      closeMenu: 'Fechar menu de navegação',
+      languageToggle: 'Mudar para inglês',
+      scrollTop: 'Voltar ao topo',
+      close: 'Fechar'
+    },
+    nav: { about: 'Sobre', projects: 'Projetos', artifacts: 'Artefatos', experience: 'Experiência', contact: 'Contato' },
     hero: {
-      label: 'Sorocaba-SP, Brasil · Aberto a oportunidades',
-      greeting: 'Olá, eu sou <span class="text-gradient">Douglas Zulim</span>',
-      tagline: 'Eu quebro as coisas antes dos usuários. Cinco anos transformando caos em confiança através de automação de testes com Playwright, Selenium e uma busca incansável por qualidade.',
-      btnProjects: 'Ver Projetos',
-      btnContact: 'Entre em Contato',
-      scroll: 'Rolar',
-      proofEyebrow: 'SINAL DE QUALIDADE',
-      proofTitle: 'Confiança antes da release.',
-      proofExperience: 'Experiência',
-      proofExperienceValue: '5 anos',
-      proofCoverage: 'Cobertura',
-      proofAutomation: 'Automação',
-      proofStep1: 'Entender o risco',
-      proofStep2: 'Automatizar com critério',
-      proofStep3: 'Entregar com evidências',
+      location: 'Sorocaba-SP, Brasil · Aberto a oportunidades',
+      title: 'QA Engineer focado em automação, APIs e confiabilidade',
+      description: 'Cinco anos de experiência em Qualidade de Software, atuando com automação, testes de API, integrações e investigação de defeitos utilizando Playwright, TypeScript, Postman e SQL.',
+      viewProjects: 'Ver projetos',
+      downloadResume: 'Baixar currículo',
+      metricsLabel: 'Indicadores profissionais com contexto',
+      metricsEyebrow: 'EXPERIÊNCIA EM QUALIDADE',
+      metricsTitle: 'Contexto por trás dos números.',
+      years: 'anos',
+      qaExperience: 'Experiência em QA',
+      automatedScenarios: 'Cenários na suíte automatizada',
+      monthlyReleases: 'Releases validadas mensalmente',
+      scenariosNote: 'Atuação na manutenção e evolução de uma suíte com mais de 600 cenários automatizados.',
+      releasesNote: 'Participação na validação de aproximadamente 15 a 20 releases mensais.',
+      metricContext: 'Contribuição em equipe na manutenção da suíte e na validação das releases.'
     },
-
-    // Seção Sobre
     about: {
-      label: '// Sobre Mim',
-      title: 'Construindo Qualidade <span class="text-gradient">Em Cada Linha</span>',
-      p1: 'Eu sou <strong>Douglas Zulim</strong>, Engenheiro de Qualidade baseado em <strong>Sorocaba-SP, Brasil</strong> com <strong>cinco anos</strong> de experiência em testes automatizados e manuais, garantindo a confiabilidade do software e a satisfação do usuário.',
-      p2: 'Minha jornada começou no suporte técnico na <strong>Eduzz</strong>, onde rapidamente progredi de Analista de Suporte Júnior para Analista de QA — impulsionado por uma curiosidade profunda sobre como os sistemas falham. Hoje me especializo em construir suítes de testes automatizados com <strong>Playwright</strong>, <strong>Selenium</strong> e <strong>Postman</strong>, cobrindo camadas de API, Web e Desktop.',
-      p3: 'Trabalho com metodologias ágeis (<strong>Scrum/Kanban</strong>), colaborando de perto com desenvolvedores e Product Owners para definir critérios de aceite e padrões de qualidade. Uso <strong>TypeScript</strong>, <strong>Python</strong> e <strong>SQL</strong>, com <strong>Git</strong> e <strong>Jira</strong> apoiando versionamento, gestão de defeitos e fluxos de CI/CD.',
-      statYears: 'Anos em QA',
-      statSurfaces: 'Superfícies Testadas',
-      statTools: 'Ferramentas de Automação',
+      label: '// Sobre mim',
+      title: 'Qualidade com visão <span class="text-gradient">técnica e de negócio</span>',
+      p1: 'Sou QA Engineer com cinco anos de experiência em Qualidade de Software, atuando com automação de testes, validação de APIs, testes integrados e investigação de defeitos.',
+      p2: 'Minha trajetória começou na área de suporte técnico, onde desenvolvi experiência em troubleshooting, análise de incidentes, SQL e compreensão das necessidades dos clientes. Essa base fortaleceu minha atuação em QA, permitindo analisar tanto o comportamento técnico dos sistemas quanto o impacto das falhas para o usuário e para o negócio.',
+      p3: 'Na área de qualidade, trabalhei com APIs e aplicações Web/Desktop utilizando Playwright, TypeScript, Selenium, Postman, Python e SQL. Contribuí para a manutenção e evolução de uma suíte com mais de 600 cenários automatizados e participei da validação de aproximadamente 15 a 20 releases mensais.',
+      p4: 'Tenho experiência com testes funcionais, exploratórios, integração, regressão, critérios de aceitação, gestão de defeitos, Git, Jira, Jenkins e CI/CD. Também atuei com sistemas de pagamento, Pix Automático, PSPs e webhooks, colaborando com desenvolvimento e produto desde o refinamento até a validação das entregas.'
     },
-
-    // Seção Habilidades
     skills: {
-      label: '// Stack Técnica',
-      title: 'Ferramentas & <span class="text-gradient">Tecnologias</span>',
-      subtitle: 'As tecnologias que uso para entregar qualidade em escala.',
-      catAutomation: '🤖 Automação de Testes',
-      catLanguages: '💻 Linguagens',
-      catApi: '🔗 API & Performance',
-      catCicd: '⚙️ CI/CD & DevOps',
-      catDb: '📊 Bancos de Dados & Monitoramento',
+      label: '// Tecnologias por contexto',
+      title: 'Experiência, prática e <span class="text-gradient">aprendizado</span>',
+      subtitle: 'As ferramentas estão agrupadas pelo contexto de uso, sem porcentagens ou níveis artificiais.',
+      professional: 'Experiência profissional',
+      professionalBadge: 'Experiência profissional',
+      practical: 'Projetos práticos',
+      practicalBadge: 'Projeto prático',
+      learning: 'Em aprendizado',
+      learningBadge: 'Em aprendizado',
+      professionalAria: 'Tecnologias com experiência profissional',
+      practicalAria: 'Tecnologias usadas em projetos práticos',
+      learningAria: 'Tecnologias em aprendizado'
     },
-
-    // Seção Projetos
     projects: {
-      label: '// Trabalhos em Destaque',
-      title: 'Projetos & <span class="text-gradient">Estudos de Caso</span>',
-      subtitle: 'Projetos reais de QA demonstrando frameworks de automação, estratégias de teste e cultura de qualidade.',
-      filterAll: 'Todos',
-      filterAutomation: 'Automação',
-      filterApi: 'API',
-      filterCicd: 'CI/CD',
-      filterPerformance: 'Performance',
-      project1Title: 'Framework de Automação E2E',
-      project1Desc: 'Um framework escalável de automação de testes end-to-end construído com Cypress e TypeScript. Implementa Page Object Model, comandos customizados e execução paralela. Reduziu o tempo de testes de regressão em 70%.',
-      project2Title: 'Suíte de Testes de API',
-      project2Desc: 'Suíte abrangente de testes de API REST usando Python e Pytest. Possui validação de schema, testes orientados a dados e testes de contrato automatizados. Cobre 150+ endpoints com 98% de confiabilidade.',
+      label: '// Portfólio técnico',
+      title: 'Projetos Práticos e <span class="text-gradient">Estudos de Caso</span>',
+      subtitle: 'Projetos demonstrativos de automação, testes de API, CI/CD e estratégia de qualidade desenvolvidos para aplicar conceitos e boas práticas de QA.',
+      filterAria: 'Filtrar projetos',
+      filterAll: 'Todos', filterAutomation: 'Automação', filterApi: 'API', filterCicd: 'CI/CD', filterPerformance: 'Performance',
+      practicalBadge: 'Projeto prático',
+      inDevelopment: 'Em desenvolvimento',
+      planned: 'Planejado',
+      project1Title: 'Framework de Automação Web',
+      project1Desc: 'Projeto demonstrativo de automação Web utilizando Playwright ou Cypress com TypeScript, organização por camadas, Page Objects, fixtures, dados reutilizáveis, relatórios e execução em CI/CD.',
+      project2Title: 'Automação de Testes de API',
+      project2Desc: 'Projeto prático de automação de APIs cobrindo métodos HTTP, cenários positivos e negativos, validação de schema, autenticação, dados parametrizados e execução automatizada.',
       project3Title: 'Pipeline de Qualidade CI/CD',
-      project3Desc: 'Pipeline CI/CD de ponta a ponta integrando testes automatizados em cada estágio. Configurei Jenkins e GitHub Actions para executar testes unitários, de integração e E2E com relatórios automatizados e notificações no Slack.',
-      project4Title: 'Dashboard de Testes de Performance',
-      project4Desc: 'Infraestrutura de testes de carga e stress usando k6 com monitoramento em tempo real via dashboards Grafana. Identifiquei gargalos críticos que melhoraram os tempos de resposta da API em 40% sob carga.',
+      project3Desc: 'Projeto demonstrativo de integração de testes automatizados com GitHub Actions, incluindo execução de suítes, publicação de resultados e bloqueio do pipeline em falhas críticas.',
+      project4Title: 'Laboratório de Testes de Performance',
+      project4Desc: 'Laboratório de testes de carga com k6 criado para estudar thresholds, tempo de resposta, throughput, taxa de erros e comportamento da aplicação sob diferentes níveis de carga.',
+      viewCode: 'Ver código',
+      viewDocs: 'Ver documentação',
+      repositoryPending: 'README e repositório específico serão publicados quando o projeto estiver disponível.'
     },
-
-    // Seção Artefatos QA
     artifacts: {
-      label: '// Artefatos QA',
-      title: '<span class="text-gradient">Documentação QA</span> Real',
-      subtitle: 'Exemplos de trabalho estruturado de QA — de casos de teste a relatórios de bugs.',
-      tabTestCases: 'Casos de Teste',
-      tabBugReports: 'Relatórios de Bug',
-      tabTestPlans: 'Planos de Teste',
-      tabReports: 'Relatórios de Automação',
-      // Tabela de Casos de Teste
-      tcTitle: '🧪 Fluxo de Login — Casos de Teste',
-      tcBadge: '12 Casos',
-      thId: 'ID',
-      thDescription: 'Descrição',
-      thPriority: 'Prioridade',
-      thStatus: 'Status',
-      tc001: 'Login com credenciais válidas',
-      tc002: 'Mensagem de erro para senha inválida',
-      tc003: 'Validação de campos vazios',
-      tc004: 'Bloqueio de conta após 5 tentativas falhas',
-      tc005: 'Funcionalidade "Lembrar-me"',
-      tc006: 'Fluxo de redirecionamento SSO / OAuth2',
-      statusPass: '✓ Aprovado',
-      // Relatórios de Bug
-      bugTitle: '🐛 Relatórios de Bug — Sprint 42',
-      bugBadge: '3 Críticos',
-      thSummary: 'Resumo',
-      thSeverity: 'Severidade',
-      bug1847: 'Pagamento falha silenciosamente em timeout > 30s',
-      bug1852: 'Total do carrinho não atualiza após remoção de cupom',
-      bug1856: 'Condição de corrida em pedidos simultâneos',
-      bug1861: 'Resultados de busca inconsistentes com caracteres especiais',
-      bug1865: 'Token de sessão não renovado ao alterar senha',
-      statusFixed: '✓ Corrigido',
-      statusInProgress: '⚠ Em Progresso',
-      // Planos de Teste
-      tpTitle: '📋 Plano de Teste — E-Commerce Release v3.2',
-      tpBadge: 'Ativo',
-      tpObjectiveLabel: 'Objetivo:',
-      tpObjective: 'Validar todas as jornadas críticas do usuário para o release v3.2, incluindo nova integração de provedor de pagamento e fluxo de checkout redesenhado.',
-      tpScopeLabel: 'Escopo:',
-      tpScope1: '✅ Testes funcionais — checkout, pagamentos, carrinho',
-      tpScope2: '✅ Testes de integração — API do gateway de pagamento',
-      tpScope3: '✅ Testes de regressão — funcionalidades existentes',
-      tpScope4: '✅ Testes de performance — checkout sob carga',
-      tpScope5: '⬜ Testes de segurança — verificações de conformidade PCI',
-      tpMetricsLabel: 'Métricas de Teste:',
-      tpMetric1: 'Total de casos de teste: <span style="color: var(--color-primary);">247</span>',
-      tpMetric2: 'Automatizados: <span style="color: var(--color-success);">189 (76%)</span>',
-      tpMetric3: 'Manuais: <span style="color: var(--color-warning);">58 (24%)</span>',
-      tpMetric4: 'Taxa de aprovação: <span style="color: var(--color-success);">96.4%</span>',
-      // Relatórios de Automação
-      arTitle: '📊 Relatório de Automação — Execução Noturna',
-      arBadge: 'Aprovado',
-      arTotalTests: 'Total de Testes',
-      arPassed: 'Aprovados',
-      arFailed: 'Falhos',
-      arSkipped: 'Pulados',
-      arFooter: 'Tempo de execução: 42.3s · Ambiente: staging · Navegador: Chrome 120',
+      label: '// Evidências de abordagem',
+      title: 'Artefatos Demonstrativos <span class="text-gradient">de QA</span>',
+      disclaimer: 'Os exemplos abaixo utilizam cenários fictícios e foram criados exclusivamente para demonstrar minha abordagem de qualidade. Não contêm dados, código ou informações confidenciais de empregadores.',
+      testCaseTitle: 'Caso de teste — autenticação',
+      testCaseSummary: 'Cenário completo com pré-condições, dados, passos, prioridade e resultado esperado.',
+      bugTitle: 'Relatório de bug — pagamento',
+      bugSummary: 'Registro reprodutível com severidade, evidências e request/response fictícios.',
+      planTitle: 'Plano de teste — checkout',
+      planSummary: 'Estratégia baseada em risco, incluindo escopo, ambiente e critérios de entrada e saída.',
+      reportTitle: 'Relatório de automação',
+      reportSummary: 'Exemplo fictício de leitura de resultados, ambiente e informações de execução.',
+      open: 'Abrir artefato'
     },
-
-    // Seção Experiência
+    artifactDetails: {
+      demoNotice: 'Exemplo fictício para demonstração.',
+      reportNotice: 'Números fictícios usados somente para demonstrar a estrutura do relatório.',
+      testCaseTitle: 'Caso de teste — autenticação com credenciais válidas',
+      bugTitle: 'Pagamento aprovado retorna mensagem de falha',
+      planTitle: 'Plano de teste — checkout demonstrativo',
+      reportTitle: 'Relatório de automação — execução demonstrativa',
+      preconditions: 'Pré-condições', steps: 'Passos', data: 'Dados', expected: 'Resultado esperado', priority: 'Prioridade', status: 'Status',
+      tcPreconditions: 'Usuário ativo e página de login disponível no ambiente de teste.',
+      tcSteps: '1. Acessar o login; 2. Informar e-mail e senha válidos; 3. Selecionar “Entrar”.',
+      tcData: 'qa.demo@example.test / senha fictícia válida.',
+      tcExpected: 'Autenticação concluída, sessão criada e redirecionamento para a área inicial.',
+      high: 'Alta', ready: 'Pronto para execução',
+      environment: 'Ambiente', version: 'Versão', reproduction: 'Passos para reprodução', actual: 'Resultado atual', severity: 'Severidade', frequency: 'Frequência', evidence: 'Evidências', critical: 'Crítica',
+      bugPreconditions: 'Carrinho com produto fictício e usuário autenticado.',
+      bugSteps: '1. Abrir checkout; 2. Selecionar Pix; 3. Confirmar pagamento simulado; 4. Observar o retorno.',
+      bugActual: 'A API responde 200/APPROVED, mas a interface exibe “Pagamento não concluído”.',
+      bugExpected: 'A interface confirma o pagamento e apresenta o identificador do pedido.',
+      bugEvidence: 'Captura fictícia da interface e correlação de logs.',
+      objective: 'Objetivo', scope: 'Escopo', outScope: 'Fora do escopo', risks: 'Riscos', strategy: 'Estratégia', testTypes: 'Tipos de teste', entry: 'Critérios de entrada', exit: 'Critérios de saída', dependencies: 'Dependências',
+      planObjective: 'Validar os fluxos críticos de checkout e a integração com um provedor de pagamento fictício.',
+      planScope: 'Carrinho, cupom, checkout, Pix e retorno de status.',
+      planOutScope: 'Chargeback, conciliação financeira e testes de produção.',
+      planRisks: 'Duplicidade, perda de status e divergência de valores.',
+      planStrategy: 'Testes funcionais, exploratórios, integração, regressão direcionada e automação dos fluxos determinísticos.',
+      planTypes: 'API, Web, integração, regressão e exploratório.',
+      planEntry: 'Build disponível, ambiente estável, dados e critérios de aceitação revisados.',
+      planExit: 'Fluxos críticos aprovados e nenhuma falha bloqueadora aberta.',
+      planDependencies: 'Sandbox do PSP fictício, massa de dados e pipeline de testes.',
+      total: 'Total de testes', passed: 'Aprovados', failed: 'Falhas', skipped: 'Ignorados', duration: 'Tempo de execução', browser: 'Navegador', date: 'Data', pipeline: 'Pipeline/relatório',
+      sampleDate: 'Data fictícia', unavailable: 'Indisponível — projeto ainda não publicado.'
+    },
     experience: {
-      label: '// Jornada Profissional',
-      title: 'Experiência <span class="text-gradient">Profissional</span>',
-      job1Date: '06/2021 — 06/2026',
-      job1Title: 'Analista de Qualidade (QA)',
-      job1Company: 'Eduzz · Tempo integral',
-      job1Desc: 'Desenvolvimento e manutenção de testes automatizados com Playwright e Postman para validação de API e UI (Web e Desktop). Implementação de testes de integração e regressão, garantindo a estabilidade das releases. Participação ativa no ciclo de desenvolvimento ágil (Scrum), colaborando com desenvolvedores e POs para definir critérios de aceite e qualidade. Uso de Git para versionamento e integração contínua (CI/CD). Suporte na análise e solução de bugs, usando SQL para investigar problemas no banco de dados.',
-      job2Date: '01/2021 — 05/2021',
-      job2Title: 'Analista de Suporte Pleno',
-      job2Company: 'Eduzz · Tempo integral',
-      job2Desc: 'Suporte técnico ao cliente, analisando casos para abertura de melhorias, incidentes e problemas. Análises realizadas utilizando SQL para investigar problemas. Abertura de cards no Jira e participação em reuniões de defeitos para tratar os problemas identificados.',
-      job3Date: '09/2019 — 12/2020',
-      job3Title: 'Analista de Suporte Júnior',
-      job3Company: 'Eduzz · Tempo integral',
-      job3Desc: 'Atendimento ao cliente via e-mail e chat. Configuração de pixels, webhooks e produtos da plataforma.',
+      label: '// Trajetória', title: 'Experiência <span class="text-gradient">Profissional</span>', fullTime: 'Tempo integral',
+      job1Date: '06/2021 – 06/2026', job1Title: 'Analista de Qualidade',
+      job1Item1: 'Desenvolvimento e manutenção de testes automatizados com Playwright e TypeScript para APIs e aplicações Web/Desktop.',
+      job1Item2: 'Contribuição na manutenção e evolução de uma suíte com mais de 600 cenários automatizados.',
+      job1Item3: 'Participação na validação de aproximadamente 15 a 20 releases mensais, priorizando fluxos críticos e riscos de regressão.',
+      job1Item4: 'Planejamento e execução de testes funcionais, exploratórios, integrados e de regressão.',
+      job1Item5: 'Validação de APIs REST com Postman, analisando status HTTP, payloads, contratos e regras de negócio.',
+      job1Item6: 'Investigação de defeitos e inconsistências utilizando SQL, logs e evidências técnicas.',
+      job1Item7: 'Participação em refinamentos e definição de critérios de aceitação com desenvolvimento e produto.',
+      job1Item8: 'Atuação em fluxos de pagamentos, Pix Automático, PSPs e webhooks.',
+      job1Item9: 'Versionamento de projetos com Git e execução de testes em fluxos de CI/CD utilizando Jenkins.',
+      job2Date: '01/2021 – 05/2021', job2Title: 'Analista de Suporte Pleno',
+      job2Item1: 'Atendimento técnico e investigação de problemas reportados por clientes.',
+      job2Item2: 'Análise de inconsistências utilizando SQL.',
+      job2Item3: 'Registro de incidentes, problemas e solicitações de melhoria no Jira.',
+      job2Item4: 'Participação em triagens e reuniões de defeitos.',
+      job2Item5: 'Documentação de cenários e evidências para apoiar a investigação técnica.',
+      job3Date: '09/2019 – 12/2020', job3Title: 'Analista de Suporte Júnior',
+      job3Item1: 'Atendimento aos clientes por e-mail e chat.',
+      job3Item2: 'Configuração e suporte a pixels, webhooks e produtos da plataforma.',
+      job3Item3: 'Análise inicial de problemas e encaminhamento para equipes técnicas.',
+      job3Item4: 'Desenvolvimento de conhecimento sobre regras de negócio e experiência do usuário.'
     },
-
-    // Seção Como Testo
     mindset: {
-      label: '// Filosofia QA',
-      title: 'Como Eu <span class="text-gradient">Abordo Qualidade</span>',
-      subtitle: 'Qualidade não é apenas encontrar bugs — é construir confiança em cada release.',
-      step1Title: 'Compreender',
-      step1Desc: 'Mergulho profundo nos requisitos, histórias de usuário e critérios de aceite. Faço as perguntas certas antes de escrever um único teste — entender o "porquê" por trás das funcionalidades impulsiona testes mais inteligentes.',
-      step2Title: 'Planejar Estrategicamente',
-      step2Desc: 'Desenho estratégias de teste que equilibram risco com cobertura. Priorizo o que mais importa — caminhos críticos, casos de borda e pontos de integração — usando abordagens de teste baseadas em risco.',
-      step3Title: 'Automatizar com Inteligência',
-      step3Desc: 'Nem tudo precisa de automação. Automatizo regressão, smoke tests e validações repetitivas, mantendo os testes exploratórios manuais. A ferramenta certa para o trabalho certo.',
-      step4Title: 'Integrar Cedo',
-      step4Desc: 'Shift-left testing — incorporo verificações de qualidade no pipeline CI/CD desde o primeiro dia. Cada commit dispara testes automatizados, capturando problemas quando são mais baratos de corrigir.',
-      step5Title: 'Monitorar & Melhorar',
-      step5Desc: 'Qualidade não para no deploy. Configuro monitoramento, acompanho métricas de teste e refino continuamente o processo de testes com base em dados reais de produção e feedback da equipe.',
+      label: '// Processo', title: 'Como eu abordo <span class="text-gradient">qualidade</span>',
+      step1Title: 'Compreender', step1Desc: 'Analiso requisitos, histórias de usuário, critérios de aceitação, integrações e riscos antes de definir os testes.',
+      step2Title: 'Planejar estrategicamente', step2Desc: 'Organizo a estratégia com base no risco, priorizando fluxos críticos, cenários negativos, limites e pontos de integração.',
+      step3Title: 'Automatizar com critério', step3Desc: 'Automatizo cenários repetitivos, críticos e determinísticos, mantendo testes exploratórios e validações subjetivas na abordagem manual.',
+      step4Title: 'Integrar cedo', step4Desc: 'Busco integrar validações automatizadas ao pipeline nas primeiras etapas da entrega, executando diferentes suítes de acordo com o risco e o momento do desenvolvimento.',
+      step5Title: 'Monitorar e melhorar', step5Desc: 'Acompanho resultados das execuções, defeitos recorrentes e feedback do time para identificar oportunidades de melhoria na cobertura e no processo de qualidade.'
     },
-
-    // Seção Contato
     contact: {
-      label: '// Vamos Conversar',
-      title: 'Entre em <span class="text-gradient">Contato</span>',
-      subtitle: 'Interessado em trabalhar junto? Estou sempre aberto a discutir novos projetos, oportunidades e ideias.',
-      reachOut: 'Fale Comigo',
-      reachOutDesc: 'Se você tem uma pergunta ou quer apenas dizer oi, fique à vontade para entrar em contato. Responderei o mais rápido possível.',
-      formName: 'Nome',
-      formEmail: 'E-mail',
-      formMessage: 'Mensagem',
-      formNamePlaceholder: 'Seu nome',
-      formEmailPlaceholder: 'seu@email.com',
-      formMessagePlaceholder: 'Conte-me sobre seu projeto ou oportunidade...',
-      formSubmit: 'Enviar Mensagem',
+      label: '// Contato', title: 'Vamos <span class="text-gradient">conversar?</span>',
+      subtitle: 'Para oportunidades, projetos ou troca de experiências em qualidade, escolha o canal que preferir.',
+      email: 'E-mail', resume: 'Currículo', downloadPdf: 'Baixar PDF',
+      note: 'O formulário foi removido para não depender do aplicativo de e-mail do visitante nem armazenar dados sem uma integração segura configurada.'
     },
-
-    // Rodapé
-    footer: {
-      built: 'Feito com <span class="heart">❤</span> por <strong>Douglas Zulim</strong> · 2026',
-      quote: 'Qualidade não é um ato, é um hábito. — Aristóteles',
-    },
+    footer: { built: 'Desenvolvido por <strong>Douglas Zulim</strong> · 2026', note: 'Conteúdo profissional apresentado com contexto e transparência.' }
   },
-};
 
-// Typewriter roles per language
-const typewriterRoles = {
-  en: ['QA Engineer', 'Test Automation Engineer', 'Quality Advocate', 'SDET', 'Bug Hunter'],
-  'pt-br': ['Engenheiro de QA', 'Automação de Testes', 'Defensor da Qualidade', 'SDET', 'Caçador de Bugs'],
+  en: {
+    meta: {
+      title: 'Douglas Zulim — QA Engineer',
+      description: 'Douglas Zulim’s portfolio: QA Engineer with five years of experience in test automation, API testing, Playwright, TypeScript, SQL, and CI/CD.'
+    },
+    accessibility: {
+      skip: 'Skip to main content', primaryNav: 'Primary navigation', backToTop: 'Douglas Zulim — back to top', themeToggle: 'Toggle theme', openMenu: 'Open navigation menu', closeMenu: 'Close navigation menu', languageToggle: 'Switch to Portuguese', scrollTop: 'Back to top', close: 'Close'
+    },
+    nav: { about: 'About', projects: 'Projects', artifacts: 'Artifacts', experience: 'Experience', contact: 'Contact' },
+    hero: {
+      location: 'Sorocaba-SP, Brazil · Open to opportunities',
+      title: 'QA Engineer focused on automation, APIs, and reliability',
+      description: 'Five years of experience in Software Quality, working with test automation, API testing, integrations, and defect investigation using Playwright, TypeScript, Postman, and SQL.',
+      viewProjects: 'View projects', downloadResume: 'Download résumé', metricsLabel: 'Professional indicators with context', metricsEyebrow: 'QUALITY EXPERIENCE', metricsTitle: 'Context behind the numbers.', years: 'years', qaExperience: 'QA experience', automatedScenarios: 'Scenarios in the automated suite', monthlyReleases: 'Releases validated monthly',
+      scenariosNote: 'Worked on maintaining and evolving a suite with more than 600 automated scenarios.',
+      releasesNote: 'Participated in validating approximately 15 to 20 releases per month.',
+      metricContext: 'Team contribution to suite maintenance and release validation.'
+    },
+    about: {
+      label: '// About me', title: 'Quality with a <span class="text-gradient">technical and business perspective</span>',
+      p1: 'I am a QA Engineer with five years of experience in Software Quality, working with test automation, API validation, integration testing, and defect investigation.',
+      p2: 'My career started in technical support, where I developed experience in troubleshooting, incident analysis, SQL, and understanding customer needs. This background strengthened my work in QA, allowing me to evaluate both the technical behavior of systems and the impact of failures on users and the business.',
+      p3: 'In Quality Assurance, I worked with APIs and Web/Desktop applications using Playwright, TypeScript, Selenium, Postman, Python, and SQL. I contributed to maintaining and evolving a suite with more than 600 automated scenarios and participated in the validation of approximately 15 to 20 releases per month.',
+      p4: 'I have experience with functional, exploratory, integration, and regression testing, acceptance criteria, defect management, Git, Jira, Jenkins, and CI/CD. I also worked with payment systems, Pix Automático, PSPs, and webhooks, collaborating with engineering and product teams from requirement refinement through release validation.'
+    },
+    skills: {
+      label: '// Technologies by context', title: 'Experience, practice, and <span class="text-gradient">learning</span>', subtitle: 'Tools are grouped by usage context, without artificial percentages or proficiency levels.', professional: 'Professional experience', professionalBadge: 'Professional experience', practical: 'Practical projects', practicalBadge: 'Practical project', learning: 'Currently learning', learningBadge: 'Currently learning', professionalAria: 'Technologies used professionally', practicalAria: 'Technologies used in practical projects', learningAria: 'Technologies currently being learned'
+    },
+    projects: {
+      label: '// Technical portfolio', title: 'Practical Projects & <span class="text-gradient">Case Studies</span>', subtitle: 'Demonstration projects covering automation, API testing, CI/CD, and quality strategy, developed to apply QA concepts and good practices.', filterAria: 'Filter projects', filterAll: 'All', filterAutomation: 'Automation', filterApi: 'API', filterCicd: 'CI/CD', filterPerformance: 'Performance', practicalBadge: 'Practical project', inDevelopment: 'In development', planned: 'Planned',
+      project1Title: 'Web Automation Framework', project1Desc: 'Demonstration Web automation project using Playwright or Cypress with TypeScript, layered organization, Page Objects, fixtures, reusable data, reports, and CI/CD execution.',
+      project2Title: 'API Test Automation', project2Desc: 'Practical API automation project covering HTTP methods, positive and negative scenarios, schema validation, authentication, parameterized data, and automated execution.',
+      project3Title: 'CI/CD Quality Pipeline', project3Desc: 'Demonstration project integrating automated tests with GitHub Actions, including suite execution, results publishing, and pipeline blocking on critical failures.',
+      project4Title: 'Performance Testing Lab', project4Desc: 'Load testing lab built with k6 to study thresholds, response time, throughput, error rate, and application behavior under different load levels.',
+      viewCode: 'View code', viewDocs: 'View documentation', repositoryPending: 'The README and dedicated repository will be published when the project becomes available.'
+    },
+    artifacts: {
+      label: '// Approach evidence', title: 'Demonstration <span class="text-gradient">QA Artifacts</span>', disclaimer: 'The examples below use fictional scenarios and were created exclusively to demonstrate my quality approach. They contain no employer data, code, or confidential information.',
+      testCaseTitle: 'Test case — authentication', testCaseSummary: 'Complete scenario with preconditions, data, steps, priority, and expected result.',
+      bugTitle: 'Bug report — payment', bugSummary: 'Reproducible record with severity, evidence, and fictional request/response.',
+      planTitle: 'Test plan — checkout', planSummary: 'Risk-based strategy including scope, environment, and entry and exit criteria.',
+      reportTitle: 'Automation report', reportSummary: 'Fictional example showing how to read results, environment, and execution information.', open: 'Open artifact'
+    },
+    artifactDetails: {
+      demoNotice: 'Fictional example for demonstration purposes.', reportNotice: 'Fictional numbers used only to demonstrate the report structure.',
+      testCaseTitle: 'Test case — authentication with valid credentials', bugTitle: 'Approved payment displays a failure message', planTitle: 'Test plan — demonstration checkout', reportTitle: 'Automation report — demonstration run',
+      preconditions: 'Preconditions', steps: 'Steps', data: 'Data', expected: 'Expected result', priority: 'Priority', status: 'Status',
+      tcPreconditions: 'Active user and login page available in the test environment.', tcSteps: '1. Open login; 2. Enter a valid email and password; 3. Select “Sign in”.', tcData: 'qa.demo@example.test / fictional valid password.', tcExpected: 'Authentication succeeds, a session is created, and the user is redirected to the home area.', high: 'High', ready: 'Ready to run',
+      environment: 'Environment', version: 'Version', reproduction: 'Steps to reproduce', actual: 'Actual result', severity: 'Severity', frequency: 'Frequency', evidence: 'Evidence', critical: 'Critical',
+      bugPreconditions: 'Cart with a fictional product and an authenticated user.', bugSteps: '1. Open checkout; 2. Select Pix; 3. Confirm the simulated payment; 4. Observe the result.', bugActual: 'The API responds with 200/APPROVED, but the interface displays “Payment not completed”.', bugExpected: 'The interface confirms payment and displays the order identifier.', bugEvidence: 'Fictional interface screenshot and correlated logs.',
+      objective: 'Objective', scope: 'Scope', outScope: 'Out of scope', risks: 'Risks', strategy: 'Strategy', testTypes: 'Test types', entry: 'Entry criteria', exit: 'Exit criteria', dependencies: 'Dependencies',
+      planObjective: 'Validate critical checkout flows and integration with a fictional payment provider.', planScope: 'Cart, coupon, checkout, Pix, and status callback.', planOutScope: 'Chargebacks, financial reconciliation, and production testing.', planRisks: 'Duplicate charges, lost status updates, and value mismatches.', planStrategy: 'Functional, exploratory, integration, targeted regression testing, and automation of deterministic flows.', planTypes: 'API, Web, integration, regression, and exploratory.', planEntry: 'Available build, stable environment, test data, and reviewed acceptance criteria.', planExit: 'Critical flows approved and no open blocking defects.', planDependencies: 'Fictional PSP sandbox, test data, and test pipeline.',
+      total: 'Total tests', passed: 'Passed', failed: 'Failed', skipped: 'Skipped', duration: 'Execution time', browser: 'Browser', date: 'Date', pipeline: 'Pipeline/report', sampleDate: 'Fictional date', unavailable: 'Unavailable — project not published yet.'
+    },
+    experience: {
+      label: '// Career', title: 'Professional <span class="text-gradient">Experience</span>', fullTime: 'Full-time',
+      job1Date: 'Jun 2021 – Jun 2026', job1Title: 'Quality Assurance Analyst',
+      job1Item1: 'Developed and maintained automated tests with Playwright and TypeScript for APIs and Web/Desktop applications.',
+      job1Item2: 'Contributed to maintaining and evolving a suite with more than 600 automated scenarios.',
+      job1Item3: 'Participated in validating approximately 15 to 20 releases per month, prioritizing critical flows and regression risks.',
+      job1Item4: 'Planned and executed functional, exploratory, integration, and regression testing.',
+      job1Item5: 'Validated REST APIs with Postman, analyzing HTTP statuses, payloads, contracts, and business rules.',
+      job1Item6: 'Investigated defects and inconsistencies using SQL, logs, and technical evidence.',
+      job1Item7: 'Participated in refinements and defined acceptance criteria with engineering and product teams.',
+      job1Item8: 'Worked with payment flows, Pix Automático, PSPs, and webhooks.',
+      job1Item9: 'Used Git for project versioning and ran tests in CI/CD flows with Jenkins.',
+      job2Date: 'Jan 2021 – May 2021', job2Title: 'Mid-Level Support Analyst',
+      job2Item1: 'Provided technical support and investigated customer-reported problems.', job2Item2: 'Analyzed inconsistencies using SQL.', job2Item3: 'Logged incidents, problems, and improvement requests in Jira.', job2Item4: 'Participated in defect triage and review meetings.', job2Item5: 'Documented scenarios and evidence to support technical investigations.',
+      job3Date: 'Sep 2019 – Dec 2020', job3Title: 'Junior Support Analyst',
+      job3Item1: 'Supported customers by email and chat.', job3Item2: 'Configured and supported pixels, webhooks, and platform products.', job3Item3: 'Performed initial problem analysis and escalated issues to technical teams.', job3Item4: 'Developed knowledge of business rules and user experience.'
+    },
+    mindset: {
+      label: '// Process', title: 'How I approach <span class="text-gradient">quality</span>',
+      step1Title: 'Understand', step1Desc: 'I analyze requirements, user stories, acceptance criteria, integrations, and risks before defining tests.',
+      step2Title: 'Plan strategically', step2Desc: 'I organize the strategy based on risk, prioritizing critical flows, negative scenarios, boundaries, and integration points.',
+      step3Title: 'Automate thoughtfully', step3Desc: 'I automate repetitive, critical, and deterministic scenarios while keeping exploratory tests and subjective validations in the manual approach.',
+      step4Title: 'Integrate early', step4Desc: 'I aim to integrate automated validations into the pipeline during the early delivery stages, running different suites according to risk and the development phase.',
+      step5Title: 'Monitor and improve', step5Desc: 'I review execution results, recurring defects, and team feedback to identify opportunities to improve coverage and the quality process.'
+    },
+    contact: {
+      label: '// Contact', title: 'Let’s <span class="text-gradient">talk?</span>', subtitle: 'For opportunities, projects, or exchanging quality experiences, choose your preferred channel.', email: 'Email', resume: 'Résumé', downloadPdf: 'Download PDF', note: 'The form was removed so the site does not rely on the visitor’s email application or store data without a secure integration.'
+    },
+    footer: { built: 'Built by <strong>Douglas Zulim</strong> · 2026', note: 'Professional content presented with context and transparency.' }
+  }
 };
 
 window.I18n = I18n;
-window.translations = translations;
-window.typewriterRoles = typewriterRoles;

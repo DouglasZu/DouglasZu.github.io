@@ -5,7 +5,7 @@
 class Filters {
   constructor() {
     this.initProjectFilters();
-    this.initArtifactTabs();
+    this.initArtifactDialogs();
   }
 
   /* ---- Project Filters ---- */
@@ -16,12 +16,17 @@ class Filters {
     if (!filterBtns.length) return;
 
     filterBtns.forEach(btn => {
+      btn.setAttribute('aria-pressed', String(btn.classList.contains('active')));
       btn.addEventListener('click', () => {
         const filter = btn.dataset.filter;
 
         // Update active button
-        filterBtns.forEach(b => b.classList.remove('active'));
+        filterBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
 
         // Filter cards
         projectCards.forEach(card => {
@@ -29,13 +34,17 @@ class Filters {
           const show = filter === 'all' || category === filter;
 
           if (show) {
+            card.hidden = false;
+            card.setAttribute('aria-hidden', 'false');
             card.classList.remove('hidden');
             card.style.position = '';
           } else {
+            card.setAttribute('aria-hidden', 'true');
             card.classList.add('hidden');
             // Delay position change for animation
             setTimeout(() => {
               if (card.classList.contains('hidden')) {
+                card.hidden = true;
                 card.style.position = 'absolute';
               }
             }, 400);
@@ -45,25 +54,21 @@ class Filters {
     });
   }
 
-  /* ---- Artifact Tabs ---- */
-  initArtifactTabs() {
-    const tabBtns = document.querySelectorAll('.artifact-tab-btn');
-    const tabContents = document.querySelectorAll('.artifact-tab-content');
+  initArtifactDialogs() {
+    const openButtons = document.querySelectorAll('.dialog-open');
+    const dialogs = document.querySelectorAll('.artifact-dialog');
 
-    if (!tabBtns.length) return;
+    openButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const dialog = document.getElementById(button.dataset.dialog);
+        if (dialog?.showModal) dialog.showModal();
+      });
+    });
 
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.dataset.tab;
-
-        // Update active button
-        tabBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        // Show target content
-        tabContents.forEach(content => {
-          content.classList.toggle('active', content.id === target);
-        });
+    dialogs.forEach((dialog) => {
+      dialog.querySelector('.dialog-close')?.addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) dialog.close();
       });
     });
   }

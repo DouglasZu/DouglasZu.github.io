@@ -60,7 +60,8 @@ class Navigation {
         const targetId = link.getAttribute('href');
         const target = document.querySelector(targetId);
         if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
+          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
           this.closeMobileMenu();
         }
       });
@@ -106,15 +107,17 @@ class Navigation {
         this.mobileToggle.focus();
       }
     });
+    document.addEventListener('languagechange', () => this.updateMobileLabel());
   }
 
   toggleMobileMenu() {
     const isOpen = this.mobileMenu.classList.toggle('open');
     this.mobileToggle.classList.toggle('active', isOpen);
     this.mobileToggle.setAttribute('aria-expanded', String(isOpen));
-    this.mobileToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    this.updateMobileLabel();
     if (this.mobileOverlay) {
       this.mobileOverlay.classList.toggle('visible', isOpen);
+      this.mobileOverlay.setAttribute('aria-hidden', String(!isOpen));
     }
     document.body.style.overflow = isOpen ? 'hidden' : '';
   }
@@ -123,18 +126,29 @@ class Navigation {
     this.mobileMenu.classList.remove('open');
     this.mobileToggle.classList.remove('active');
     this.mobileToggle.setAttribute('aria-expanded', 'false');
-    this.mobileToggle.setAttribute('aria-label', 'Open navigation menu');
+    this.updateMobileLabel();
     if (this.mobileOverlay) {
       this.mobileOverlay.classList.remove('visible');
+      this.mobileOverlay.setAttribute('aria-hidden', 'true');
     }
     document.body.style.overflow = '';
+  }
+
+  updateMobileLabel() {
+    if (!this.mobileToggle) return;
+    const isOpen = this.mobileMenu?.classList.contains('open');
+    const i18n = window.i18nInstance;
+    const key = isOpen ? 'accessibility.closeMenu' : 'accessibility.openMenu';
+    const fallback = isOpen ? 'Close navigation menu' : 'Open navigation menu';
+    this.mobileToggle.setAttribute('aria-label', i18n?.getTranslation(key) || fallback);
   }
 
   /* ---- Scroll to Top ---- */
   bindScrollTop() {
     if (this.scrollTopBtn) {
       this.scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
       });
     }
   }
