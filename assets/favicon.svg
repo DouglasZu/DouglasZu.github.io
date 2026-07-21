@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Douglas Zulim</title>
+  <defs>
+    <linearGradient id="g" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00d4ff"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="#0a0f1c"/>
+  <rect x="3" y="3" width="58" height="58" rx="12" fill="none" stroke="url(#g)" stroke-width="3"/>
+  <path d="M16 18h12c10 0 16 5.2 16 14s-6 14-16 14H16V18Zm11.4 21.2c5.8 0 8.8-2.4 8.8-7.2s-3-7.2-8.8-7.2h-3.8v14.4h3.8Z" fill="#f1f5f9"/>
+  <path d="m39.5 18 8.5 0-7.1 9h-8.4l7-9Zm1 19H49l-7.2 9h-8.5l7.2-9Z" fill="url(#g)"/>
+</svg>

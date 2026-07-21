@@ -1,79 +1,98 @@
 # Douglas Zulim — QA Engineer Portfolio
 
-> **GitHub Profile package:** [`github-profile/`](./github-profile/) — deploy-ready README, local SVG assets, metrics automation, workflows and QA repository templates.
+Portfólio bilíngue de Douglas Zulim, QA Engineer com cinco anos de experiência em automação de testes, APIs, integrações e investigação de defeitos.
 
-> 🌐 **Live:** [douglaszu.github.io](https://douglaszu.github.io)
+Site publicado: [douglaszu.github.io](https://douglaszu.github.io/)
 
-A modern, high-end personal portfolio website showcasing QA Engineering expertise, test automation projects, and quality assurance culture.
+## Conteúdo do portfólio
 
-## ✨ Features
+- apresentação profissional em português e inglês;
+- métricas de atuação apresentadas com contexto de contribuição em equipe;
+- tecnologias separadas em experiência profissional, projetos práticos e aprendizado;
+- projetos de QA identificados como demonstrativos e com status real;
+- artefatos fictícios de caso de teste, bug, plano de teste e relatório de automação;
+- histórico profissional em tópicos objetivos;
+- contatos diretos e currículo em PDF;
+- tema claro/escuro e idioma persistidos no `localStorage`;
+- navegação por teclado, foco visível e suporte a `prefers-reduced-motion`;
+- metadados Open Graph, Twitter Card, canonical, favicon e schema `Person`.
 
-- **Dark/Light Mode** — Toggle with localStorage persistence
-- **Particle Animation** — Custom canvas-based hero background
-- **Scroll Animations** — IntersectionObserver-powered reveal effects
-- **Project Filtering** — Filter by Automation, API, CI/CD, Performance
-- **QA Artifacts** — Interactive tabs showing test cases, bug reports, test plans
-- **Responsive Design** — Mobile-first, works on all devices
-- **Fast Loading** — No frameworks, pure HTML/CSS/JS
-- **SEO Optimized** — Meta tags, semantic HTML, Open Graph
+## Decisões de transparência
 
-## 📁 Project Structure
+Os quatro projetos de QA estão marcados como em desenvolvimento ou planejados. Em 21/07/2026, o perfil público `DouglasZu` possuía apenas os repositórios `DouglasZu.github.io` e `site-Imobiliaria`; por isso, os cards não apontam para a página geral do GitHub nem simulam repositórios específicos.
 
-```
-├── index.html              # Single-page application
+O formulário de contato anterior abria um `mailto:` e não oferecia confirmação confiável de envio. Ele foi removido. O site mantém e-mail, LinkedIn, GitHub e currículo como canais diretos, sem armazenar dados ou expor tokens de terceiros.
+
+As métricas do artefato de automação são explicitamente fictícias e servem somente para demonstrar a estrutura de um relatório.
+
+## Estrutura principal
+
+```text
+├── assets/
+│   ├── favicon.svg
+│   └── social-card.png
 ├── css/
-│   ├── variables.css       # Design tokens (colors, spacing, fonts)
-│   ├── base.css            # Reset, typography, utilities
-│   ├── components.css      # Reusable UI components
-│   ├── sections.css        # Section-specific layouts
-│   └── animations.css      # Keyframes & scroll animations
+│   ├── variables.css
+│   ├── base.css
+│   ├── animations.css
+│   ├── components.css
+│   ├── sections.css
+│   ├── redesign.css
+│   └── qa-update.css
+├── docs/
+│   └── RESUMO_ALTERACOES.md
 ├── js/
-│   ├── main.js             # App initialization, typewriter, counters
-│   ├── theme.js            # Dark/light mode toggle
-│   ├── particles.js        # Canvas particle system
-│   ├── navigation.js       # Smooth scroll, mobile menu
-│   ├── animations.js       # Scroll reveal animations
-│   └── filters.js          # Project filter & artifact tabs
-└── README.md
+│   ├── animations.js
+│   ├── filters.js
+│   ├── i18n.js
+│   ├── main.js
+│   ├── navigation.js
+│   ├── particles.js
+│   └── theme.js
+├── output/pdf/
+│   └── curriculo-douglas-zulim.pdf
+├── scripts/
+│   └── generate_resume.py
+└── index.html
 ```
 
-## 🚀 Deployment (GitHub Pages)
+## Testar localmente
 
-This site is ready to deploy — no build step required!
+O projeto não possui etapa de build.
 
-1. Push to the `main` branch:
-   ```bash
-   git add .
-   git commit -m "feat: portfolio website"
-   git push origin main
-   ```
+```powershell
+python -m http.server 4173 --bind 127.0.0.1
+```
 
-2. Go to **Settings → Pages** in your GitHub repository
-3. Under "Source", select `main` branch and `/ (root)` folder
-4. Click **Save**
-5. Your site will be live at `https://douglaszu.github.io`
+Abra `http://127.0.0.1:4173/` e valide:
 
-## 🛠️ Tech Stack
+1. troca entre português e inglês, incluindo `lang`, tooltips e rótulos acessíveis;
+2. persistência de idioma e tema após recarregar;
+3. menu e rolagem em 320px, 375px, 768px, 1024px e desktop;
+4. abertura e fechamento dos quatro diálogos por mouse e teclado;
+5. filtros de projetos;
+6. download do currículo;
+7. console sem erros.
 
-| Category | Technology |
-|----------|-----------|
-| Structure | HTML5 |
-| Styling | CSS3 (Custom Properties, Grid, Flexbox) |
-| Logic | Vanilla JavaScript (ES6+) |
-| Fonts | Inter, JetBrains Mono (Google Fonts) |
-| Hosting | GitHub Pages |
+Para regenerar o currículo, instale `reportlab` e execute:
 
-## 📝 Customization
+```powershell
+python -m pip install reportlab
+python scripts/generate_resume.py
+```
 
-- **Personal Info** — Edit `index.html` sections directly
-- **Colors** — Modify `css/variables.css` design tokens
-- **Projects** — Update project cards in the Projects section
-- **Experience** — Edit timeline entries in the Experience section
+## Publicar no GitHub Pages
 
-## 📄 License
+As alterações estão na branch `agent/portfolio-qa-truthful-update`. Revise e aprove antes de publicar.
 
-MIT License — feel free to use this as a template!
+1. Faça commit e push da branch.
+2. Abra um pull request para `main`.
+3. Revise o conteúdo e aprove o merge.
+4. Em **Settings → Pages**, selecione **Deploy from a branch**, branch `main` e pasta `/ (root)`.
+5. Aguarde a publicação em `https://douglaszu.github.io/`.
 
----
+Nenhum deploy ou merge é executado automaticamente por este projeto.
 
-Built with ❤ by **Douglas Zulim**
+## Tecnologias do site
+
+HTML5 semântico, CSS e JavaScript puros, sem framework e sem dependências de runtime.

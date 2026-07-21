@@ -3,992 +3,296 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Douglas Zulim — Engenheiro de QA e Automação de Testes</title>
-  <meta name="description" content="Portfólio de Douglas Zulim, Engenheiro de QA com cinco anos de experiência em automação de testes, testes de API, CI/CD e garantia da qualidade.">
-  <meta name="keywords" content="QA Engineer, Test Automation, Selenium, Cypress, Playwright, Quality Assurance, SDET, Douglas Zulim">
+  <title>Douglas Zulim — QA Engineer</title>
+  <meta name="description" content="Portfólio de Douglas Zulim, QA Engineer com cinco anos de experiência em automação de testes, testes de API, Playwright, TypeScript, SQL e CI/CD.">
+  <meta name="keywords" content="Douglas Zulim, QA Engineer, QA Automation Engineer, SDET, Playwright, TypeScript, API Testing, Postman, SQL, CI/CD">
   <meta name="author" content="Douglas Zulim">
-  <meta property="og:title" content="Douglas Zulim — QA Engineer Portfolio">
-  <meta property="og:description" content="Quality Assurance Engineer specializing in test automation, API testing, and CI/CD pipelines.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://douglaszu.github.io">
-  <meta name="theme-color" content="#0a0f1c">
+  <meta name="theme-color" content="#070b14">
+  <link rel="canonical" href="https://douglaszu.github.io/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-  <!-- Fonts -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Douglas Zulim — QA Engineer">
+  <meta property="og:description" content="QA Engineer com cinco anos de experiência em automação, testes de API, Playwright, TypeScript, SQL e CI/CD.">
+  <meta property="og:url" content="https://douglaszu.github.io/">
+  <meta property="og:image" content="https://douglaszu.github.io/assets/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Douglas Zulim, QA Engineer — Playwright, TypeScript, API Testing, SQL e CI/CD">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Douglas Zulim — QA Engineer">
+  <meta name="twitter:description" content="QA Engineer com cinco anos de experiência em automação, testes de API, Playwright, TypeScript, SQL e CI/CD.">
+  <meta name="twitter:image" content="https://douglaszu.github.io/assets/social-card.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Douglas Zulim",
+    "jobTitle": "QA Engineer",
+    "url": "https://douglaszu.github.io/",
+    "email": "mailto:douglaszulim@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Sorocaba",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/douglaszulim/",
+      "https://github.com/DouglasZu"
+    ],
+    "knowsAbout": ["Quality Assurance", "Playwright", "TypeScript", "API Testing", "Postman", "SQL", "CI/CD"]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <!-- Stylesheets -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/sections.css">
   <link rel="stylesheet" href="css/redesign.css">
+  <link rel="stylesheet" href="css/qa-update.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content" data-i18n="accessibility.skip">Pular para o conteúdo principal</a>
+  <div class="mobile-overlay" id="mobile-overlay" aria-hidden="true"></div>
 
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-
-  <!-- ============================
-       PRELOADER
-       ============================ -->
-  <div class="preloader" id="preloader">
-    <div class="preloader-spinner"></div>
-  </div>
-
-  <!-- ============================
-       MOBILE OVERLAY
-       ============================ -->
-  <div class="mobile-overlay" id="mobile-overlay"></div>
-
-  <!-- ============================
-       NAVIGATION
-       ============================ -->
-  <nav class="navbar" id="navbar" aria-label="Primary navigation">
+  <nav class="navbar" id="navbar" aria-label="Navegação principal" data-i18n-aria="accessibility.primaryNav">
     <div class="container">
-      <a href="#hero" class="nav-logo" aria-label="Douglas Zulim — back to top"><span class="nav-logo-mark">DZ</span><span class="nav-logo-name">Douglas<span>.</span></span></a>
-
+      <a href="#hero" class="nav-logo" aria-label="Douglas Zulim — voltar ao início" data-i18n-aria="accessibility.backToTop">
+        <span class="nav-logo-mark" aria-hidden="true">DZ</span><span class="nav-logo-name">Douglas<span>.</span></span>
+      </a>
       <div class="nav-links" id="nav-links">
-        <a href="#about" data-i18n="nav.about">About</a>
-        <a href="#skills" data-i18n="nav.skills">Skills</a>
-        <a href="#projects" data-i18n="nav.projects">Projects</a>
-        <a href="#artifacts" data-i18n="nav.artifacts">QA Artifacts</a>
-        <a href="#experience" data-i18n="nav.experience">Experience</a>
-        <a href="#mindset" data-i18n="nav.mindset">How I Test</a>
-        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <a href="#about" data-i18n="nav.about">Sobre</a>
+        <a href="#projects" data-i18n="nav.projects">Projetos</a>
+        <a href="#artifacts" data-i18n="nav.artifacts">Artefatos</a>
+        <a href="#experience" data-i18n="nav.experience">Experiência</a>
+        <a href="#contact" data-i18n="nav.contact">Contato</a>
         <div class="nav-controls">
-          <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
-            <svg class="lang-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12.87 15.07l-2.54-2.51.03-.03A17.52 17.52 0 0014.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
-            </svg>
+          <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Mudar para inglês">
+            <svg class="lang-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.87 15.07l-2.54-2.51.03-.03A17.52 17.52 0 0014.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
             <span id="lang-toggle-label">EN</span>
           </button>
-          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-            <!-- Sun Icon -->
-            <svg class="icon-sun" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 17a5 5 0 100-10 5 5 0 000 10zm0-13v2m0 14v2m9 0H3M5.64 5.64l1.41 1.41m9.9 9.9l1.41 1.41M3 12h2m14 0h2m-2.64-6.36l-1.41 1.41M6.34 17.66l-1.41 1.41"/>
-            </svg>
-            <!-- Moon Icon -->
-            <svg class="icon-moon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/>
-            </svg>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema" data-i18n-aria="accessibility.themeToggle">
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17a5 5 0 100-10 5 5 0 000 10zm0-13v2m0 14v2m9-10h-2M5 12H3m15.36-6.36l-1.41 1.41M7.05 16.95l-1.41 1.41M5.64 5.64l1.41 1.41m9.9 9.9l1.41 1.41"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/></svg>
           </button>
         </div>
       </div>
-
-      <button class="mobile-menu-toggle" id="mobile-toggle" type="button" aria-label="Open navigation menu" aria-controls="nav-links" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="mobile-menu-toggle" id="mobile-toggle" type="button" aria-label="Abrir menu de navegação" data-i18n-aria="accessibility.openMenu" aria-controls="nav-links" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
   <main id="main-content">
-
-  <!-- ============================
-       1. HERO SECTION
-       ============================ -->
-  <section class="hero" id="hero">
-    <canvas class="hero-canvas" id="hero-particles" aria-hidden="true"></canvas>
-
-    <div class="container hero-shell">
-      <div class="hero-content">
-        <div class="hero-label">
-          <span class="dot"></span>
-          <span data-i18n="hero.label">Sorocaba-SP, Brasil · Open to opportunities</span>
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <canvas class="hero-canvas" id="hero-particles" aria-hidden="true"></canvas>
+      <div class="container hero-shell">
+        <div class="hero-content">
+          <div class="hero-label"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.location">Sorocaba-SP, Brasil · Aberto a oportunidades</span></div>
+          <h1 id="hero-title">
+            <span class="hero-title-line">Douglas Zulim</span>
+            <span class="hero-title-line hero-title-role text-gradient" data-i18n="hero.title">QA Engineer focado em automação, APIs e confiabilidade</span>
+          </h1>
+          <p class="hero-tagline" data-i18n="hero.description">Cinco anos de experiência em Qualidade de Software, atuando com automação, testes de API, integrações e investigação de defeitos utilizando Playwright, TypeScript, Postman e SQL.</p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary"><span data-i18n="hero.viewProjects">Ver projetos</span></a>
+            <a href="output/pdf/curriculo-douglas-zulim.pdf" class="btn btn-secondary" download><span data-i18n="hero.downloadResume">Baixar currículo</span></a>
+            <a href="https://www.linkedin.com/in/douglaszulim/" class="btn btn-quiet" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/DouglasZu" class="btn btn-quiet" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
         </div>
 
-        <h1>
-          <span class="hero-title-line" data-i18n="hero.greeting">Hi, I'm <span class="text-gradient">Douglas Zulim</span></span>
-          <span class="hero-title-line hero-title-role">
-            <span class="hero-role" id="typewriter">QA Engineer</span><span class="hero-cursor"></span>
-          </span>
-        </h1>
-
-        <p class="hero-tagline" data-i18n="hero.tagline">
-          I break things before users do. Five years turning chaos into confidence through test automation with Playwright, Selenium, and a relentless pursuit of quality.
-        </p>
-
-        <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">
-            <svg viewBox="0 0 24 24"><path d="M3 3h7v7H3V3zm11 0h7v7h-7V3zm0 11h7v7h-7v-7zM3 14h7v7H3v-7z"/></svg>
-            <span data-i18n="hero.btnProjects">View Projects</span>
-          </a>
-          <a href="#contact" class="btn btn-secondary">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm16 2l-8 5-8-5v2l8 5 8-5V6z"/></svg>
-            <span data-i18n="hero.btnContact">Get in Touch</span>
-          </a>
-        </div>
-
-        <div class="hero-meta" aria-label="Core expertise">
-          <span>API</span>
-          <span>Web</span>
-          <span>Desktop</span>
-          <span>Automation</span>
-        </div>
+        <aside class="hero-proof" aria-label="Indicadores profissionais" data-i18n-aria="hero.metricsLabel">
+          <div class="proof-toolbar" aria-hidden="true"><div class="proof-dots"><span></span><span></span><span></span></div><span class="proof-file">quality-profile.yml</span><span class="proof-status"><i></i> verified</span></div>
+          <div class="proof-body">
+            <div class="proof-heading"><span data-i18n="hero.metricsEyebrow">EXPERIÊNCIA EM QUALIDADE</span><strong data-i18n="hero.metricsTitle">Contexto por trás dos números.</strong></div>
+            <div class="proof-metrics professional-metrics">
+              <div class="proof-metric"><strong>5 <span data-i18n="hero.years">anos</span></strong><span data-i18n="hero.qaExperience">Experiência em QA</span></div>
+              <div class="proof-metric" tabindex="0" data-tooltip="Atuação na manutenção e evolução de uma suíte com mais de 600 cenários automatizados." data-i18n-tooltip="hero.scenariosNote"><strong>600+</strong><span data-i18n="hero.automatedScenarios">Cenários na suíte automatizada</span></div>
+              <div class="proof-metric proof-metric-wide" tabindex="0" data-tooltip="Participação na validação de aproximadamente 15 a 20 releases mensais." data-i18n-tooltip="hero.releasesNote"><strong>15–20</strong><span data-i18n="hero.monthlyReleases">Releases validadas mensalmente</span></div>
+            </div>
+            <p class="metric-context" data-i18n="hero.metricContext">Contribuição em equipe na manutenção da suíte e na validação das releases.</p>
+          </div>
+        </aside>
       </div>
+    </section>
 
-      <aside class="hero-proof" aria-label="Quality engineering profile">
-        <div class="proof-toolbar">
-          <div class="proof-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-          <span class="proof-file">release-readiness.yml</span>
-          <span class="proof-status"><i></i> verified</span>
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label" data-i18n="about.label">// Sobre mim</span>
+          <h2 id="about-title" data-i18n="about.title">Qualidade com visão <span class="text-gradient">técnica e de negócio</span></h2>
+          <div class="divider"></div>
+        </div>
+        <div class="about-copy reveal">
+          <p data-i18n="about.p1">Sou QA Engineer com cinco anos de experiência em Qualidade de Software, atuando com automação de testes, validação de APIs, testes integrados e investigação de defeitos.</p>
+          <p data-i18n="about.p2">Minha trajetória começou na área de suporte técnico, onde desenvolvi experiência em troubleshooting, análise de incidentes, SQL e compreensão das necessidades dos clientes. Essa base fortaleceu minha atuação em QA, permitindo analisar tanto o comportamento técnico dos sistemas quanto o impacto das falhas para o usuário e para o negócio.</p>
+          <p data-i18n="about.p3">Na área de qualidade, trabalhei com APIs e aplicações Web/Desktop utilizando Playwright, TypeScript, Selenium, Postman, Python e SQL. Contribuí para a manutenção e evolução de uma suíte com mais de 600 cenários automatizados e participei da validação de aproximadamente 15 a 20 releases mensais.</p>
+          <p data-i18n="about.p4">Tenho experiência com testes funcionais, exploratórios, integração, regressão, critérios de aceitação, gestão de defeitos, Git, Jira, Jenkins e CI/CD. Também atuei com sistemas de pagamento, Pix Automático, PSPs e webhooks, colaborando com desenvolvimento e produto desde o refinamento até a validação das entregas.</p>
         </div>
 
-        <div class="proof-body">
-          <div class="proof-heading">
-            <span data-i18n="hero.proofEyebrow">QUALITY SIGNAL</span>
-            <strong data-i18n="hero.proofTitle">Confidence before release.</strong>
+        <section class="skills-block" id="skills" aria-labelledby="skills-title">
+          <div class="subsection-heading reveal">
+            <span class="section-label" data-i18n="skills.label">// Tecnologias por contexto</span>
+            <h3 id="skills-title" data-i18n="skills.title">Experiência, prática e <span class="text-gradient">aprendizado</span></h3>
+            <p data-i18n="skills.subtitle">As ferramentas estão agrupadas pelo contexto de uso, sem porcentagens ou níveis artificiais.</p>
           </div>
-
-          <div class="proof-metrics">
-            <div class="proof-metric"><span data-i18n="hero.proofExperience">Experience</span><strong data-i18n="hero.proofExperienceValue">5 years</strong></div>
-            <div class="proof-metric"><span data-i18n="hero.proofCoverage">Coverage</span><strong>API · Web · Desktop</strong></div>
-            <div class="proof-metric proof-metric-wide"><span data-i18n="hero.proofAutomation">Automation</span><strong>Playwright · Postman · Selenium</strong></div>
-          </div>
-
-          <div class="proof-pipeline" aria-label="Quality delivery pipeline">
-            <span><i>01</i><b data-i18n="hero.proofStep1">Understand risk</b></span>
-            <span><i>02</i><b data-i18n="hero.proofStep2">Automate wisely</b></span>
-            <span><i>03</i><b data-i18n="hero.proofStep3">Ship with evidence</b></span>
-          </div>
-
-          <div class="proof-footer"><span>quality-gate</span><strong><i></i> READY</strong></div>
-        </div>
-      </aside>
-      </div>
-
-    <div class="hero-scroll-indicator">
-      <span data-i18n="hero.scroll">Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- ============================
-       2. ABOUT SECTION
-       ============================ -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label" data-i18n="about.label">// About Me</span>
-        <h2 data-i18n="about.title">Building Quality <span class="text-gradient">Into Every Line</span></h2>
-        <div class="divider"></div>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-text reveal-left">
-          <p data-i18n="about.p1">
-            I'm <strong>Douglas Zulim</strong>, a Quality Assurance Engineer based in <strong>Sorocaba-SP, Brazil</strong> with <strong>five years</strong> of experience in automated and manual testing, ensuring software reliability and user satisfaction.
-          </p>
-          <p data-i18n="about.p2">
-            My journey started in technical support at <strong>Eduzz</strong>, where I quickly progressed from Junior Support Analyst to QA Analyst — driven by a deep curiosity for how systems break. Today I specialize in building automated test suites with <strong>Playwright</strong>, <strong>Selenium</strong>, and <strong>Postman</strong>, covering API, Web, and Desktop layers.
-          </p>
-          <p data-i18n="about.p3">
-            I work within agile methodologies (<strong>Scrum/Kanban</strong>), collaborating closely with developers and Product Owners to define acceptance criteria and quality standards. I use <strong>TypeScript</strong>, <strong>Python</strong>, and <strong>SQL</strong>, with <strong>Git</strong> and <strong>Jira</strong> supporting versioning, defect tracking, and CI/CD flows.
-          </p>
-
-          <div class="about-stats stagger-children">
-            <div class="stat-item">
-              <div class="stat-number" data-count="5" data-suffix="">0</div>
-              <div class="stat-label" data-i18n="about.statYears">Years in QA</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number" data-count="3" data-suffix="">0</div>
-              <div class="stat-label" data-i18n="about.statSurfaces">Test Surfaces</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-number" data-count="3" data-suffix="">0</div>
-              <div class="stat-label" data-i18n="about.statTools">Core Automation Tools</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="reveal-right">
-          <div class="terminal">
-            <div class="terminal-header">
-              <span class="terminal-dot red"></span>
-              <span class="terminal-dot yellow"></span>
-              <span class="terminal-dot green"></span>
-              <span class="terminal-title">quality-profile.ts</span>
-            </div>
-            <div class="terminal-body">
-              <div class="terminal-line">
-                <span class="terminal-command"><span class="terminal-accent">const</span> qualityProfile = {</span>
-              </div>
-              <div class="terminal-line terminal-output">
-                experience: <span class="terminal-success">'5 years'</span>,
-              </div>
-              <div class="terminal-line terminal-output">
-                surfaces: [<span class="terminal-success">'API'</span>, <span class="terminal-success">'Web'</span>, <span class="terminal-success">'Desktop'</span>],
-              </div>
-              <div class="terminal-line terminal-output">
-                automation: [<span class="terminal-success">'Playwright'</span>, <span class="terminal-success">'Postman'</span>,
-              </div>
-              <div class="terminal-line terminal-output">
-                &nbsp;&nbsp;<span class="terminal-success">'Selenium'</span>],
-              </div>
-              <div class="terminal-line terminal-output">
-                languages: [<span class="terminal-success">'TypeScript'</span>, <span class="terminal-success">'Python'</span>, <span class="terminal-success">'SQL'</span>],
-              </div>
-              <div class="terminal-line terminal-output">
-                delivery: [<span class="terminal-success">'Git'</span>, <span class="terminal-success">'Jira'</span>, <span class="terminal-success">'CI/CD'</span>],
-              </div>
-              <div class="terminal-line terminal-output">
-                mindset: <span class="terminal-success">'quality throughout delivery'</span>
-              </div>
-              <div class="terminal-line">
-                <span class="terminal-command">};</span><span class="terminal-caret" aria-hidden="true"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================
-       3. SKILLS / TECH STACK
-       ============================ -->
-  <section class="section" id="skills">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label" data-i18n="skills.label">// Tech Stack</span>
-        <h2 data-i18n="skills.title">Tools & <span class="text-gradient">Technologies</span></h2>
-        <div class="divider"></div>
-        <p data-i18n="skills.subtitle">The technologies I use to deliver quality at scale.</p>
-      </div>
-
-      <div class="skills-categories">
-        <!-- Test Automation -->
-        <div class="reveal">
-          <div class="skill-category-label" data-i18n="skills.catAutomation">🤖 Test Automation</div>
-          <div class="skill-group-grid stagger-children">
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/cypress.svg" alt="Cypress" loading="lazy">
-              </div>
-              <span class="skill-name">Cypress</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <img src="https://cdn.simpleicons.org/selenium/43B026" alt="Selenium" loading="lazy">
-              </div>
-              <span class="skill-name">Selenium</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" loading="lazy">
-              </div>
-              <span class="skill-name">Playwright</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <svg viewBox="0 0 24 24" fill="var(--text-secondary)"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-              </div>
-              <span class="skill-name">Pytest</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <svg viewBox="0 0 24 24" fill="var(--text-secondary)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-              </div>
-              <span class="skill-name">JUnit</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Languages -->
-        <div class="reveal">
-          <div class="skill-category-label" data-i18n="skills.catLanguages">💻 Languages</div>
-          <div class="skill-group-grid stagger-children">
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" loading="lazy">
-              </div>
-              <span class="skill-name">Python</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy">
-              </div>
-              <span class="skill-name">JavaScript</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="TypeScript" loading="lazy">
-              </div>
-              <span class="skill-name">TypeScript</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <svg viewBox="0 0 24 24" fill="var(--text-secondary)"><path d="M8 3a2 2 0 00-2 2v4a2 2 0 01-2 2H3v2h1a2 2 0 012 2v4a2 2 0 002 2h2v-2H8v-5a2 2 0 00-1-1.73 2 2 0 001-1.73V5h2V3H8zm8 0a2 2 0 012 2v4a2 2 0 001 1.73 2 2 0 00-1 1.73V17h-2v2h2a2 2 0 002-2v-4a2 2 0 012-2h1v-2h-1a2 2 0 01-2-2V5a2 2 0 00-2-2h-2v2h2z"/></svg>
-              </div>
-              <span class="skill-name">SQL</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- API & Performance Testing -->
-        <div class="reveal">
-          <div class="skill-category-label" data-i18n="skills.catApi">🔗 API & Performance</div>
-          <div class="skill-group-grid stagger-children">
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman" loading="lazy">
-              </div>
-              <span class="skill-name">Postman</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <svg viewBox="0 0 24 24" fill="var(--text-secondary)"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-              </div>
-              <span class="skill-name">REST Assured</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <svg viewBox="0 0 24 24" fill="var(--text-secondary)"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
-              </div>
-              <span class="skill-name">JMeter</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <svg viewBox="0 0 24 24" fill="var(--text-secondary)"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z"/></svg>
-              </div>
-              <span class="skill-name">k6</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- CI/CD & DevOps -->
-        <div class="reveal">
-          <div class="skill-category-label" data-i18n="skills.catCicd">⚙️ CI/CD & DevOps</div>
-          <div class="skill-group-grid stagger-children">
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <img src="https://www.vectorlogo.zone/logos/jenkins/jenkins-icon.svg" alt="Jenkins" loading="lazy">
-              </div>
-              <span class="skill-name">Jenkins</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <svg viewBox="0 0 24 24" fill="var(--text-secondary)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              </div>
-              <span class="skill-name">GitHub Actions</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" alt="Docker" loading="lazy">
-              </div>
-              <span class="skill-name">Docker</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <svg viewBox="0 0 24 24" fill="var(--text-secondary)"><path d="M12 0L1.608 6v12L12 24l10.392-6V6L12 0zm-1.073 1.445h.001a1.8 1.8 0 012.138 0l7.534 4.35a1.794 1.794 0 01.903 1.548v8.7a1.8 1.8 0 01-.9 1.554l-7.54 4.35a1.8 1.8 0 01-2.134 0l-7.54-4.35a1.8 1.8 0 01-.9-1.554v-8.7c0-.636.342-1.224.9-1.548l7.538-4.35z"/></svg>
-              </div>
-              <span class="skill-name">Git</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Databases & Monitoring -->
-        <div class="reveal">
-          <div class="skill-category-label" data-i18n="skills.catDb">📊 Databases & Monitoring</div>
-          <div class="skill-group-grid stagger-children">
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" alt="MySQL" loading="lazy">
-              </div>
-              <span class="skill-name">MySQL</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" alt="SQL Server" loading="lazy">
-              </div>
-              <span class="skill-name">SQL Server</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <img src="https://www.vectorlogo.zone/logos/grafana/grafana-icon.svg" alt="Grafana" loading="lazy">
-              </div>
-              <span class="skill-name">Grafana</span>
-            </div>
-            <div class="skill-card hover-lift">
-              <div class="skill-icon">
-                <img src="https://www.vectorlogo.zone/logos/elasticco_kibana/elasticco_kibana-icon.svg" alt="Kibana" loading="lazy">
-              </div>
-              <span class="skill-name">Kibana</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================
-       4. PROJECTS
-       ============================ -->
-  <section class="section" id="projects">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label" data-i18n="projects.label">// Featured Work</span>
-        <h2 data-i18n="projects.title">Projects & <span class="text-gradient">Case Studies</span></h2>
-        <div class="divider"></div>
-        <p data-i18n="projects.subtitle">Real-world QA projects showcasing automation frameworks, testing strategies, and quality culture.</p>
-      </div>
-
-      <!-- Filter Tabs -->
-      <div class="tabs reveal">
-        <button class="tab-btn filter-btn active" data-filter="all" data-i18n="projects.filterAll">All</button>
-        <button class="tab-btn filter-btn" data-filter="automation" data-i18n="projects.filterAutomation">Automation</button>
-        <button class="tab-btn filter-btn" data-filter="api" data-i18n="projects.filterApi">API</button>
-        <button class="tab-btn filter-btn" data-filter="cicd" data-i18n="projects.filterCicd">CI/CD</button>
-        <button class="tab-btn filter-btn" data-filter="performance" data-i18n="projects.filterPerformance">Performance</button>
-      </div>
-
-      <!-- Projects Grid -->
-      <div class="projects-grid stagger-children">
-
-        <!-- Project 1: E2E Automation Framework -->
-        <div class="card project-card" data-category="automation" id="project-e2e">
-          <div class="project-card-inner">
-            <div class="project-card-top">
-              <div class="project-icon">
-                <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/DouglasZu" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
-                  <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-              </div>
-            </div>
-            <h3 data-i18n="projects.project1Title">E2E Automation Framework</h3>
-            <p data-i18n="projects.project1Desc">A scalable end-to-end test automation framework built with Cypress and TypeScript. Implements Page Object Model, custom commands, and parallel execution. Reduced regression testing time by 70%.</p>
-            <div class="project-tech">
-              <span class="badge">Cypress</span>
-              <span class="badge">TypeScript</span>
-              <span class="badge badge-accent">POM Pattern</span>
-              <span class="badge">Mochawesome</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 2: API Testing Suite -->
-        <div class="card project-card" data-category="api" id="project-api">
-          <div class="project-card-inner">
-            <div class="project-card-top">
-              <div class="project-icon">
-                <svg viewBox="0 0 24 24"><path d="M4 1h16a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1V2a1 1 0 011-1zm0 8h16a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1v-4a1 1 0 011-1zm0 8h16a1 1 0 011 1v4a1 1 0 01-1 1H4a1 1 0 01-1-1v-4a1 1 0 011-1z"/></svg>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/DouglasZu" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
-                  <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-              </div>
-            </div>
-            <h3 data-i18n="projects.project2Title">API Testing Suite</h3>
-            <p data-i18n="projects.project2Desc">Comprehensive REST API testing suite using Python and Pytest. Features schema validation, data-driven tests, and automated contract testing. Covers 150+ endpoints with 98% reliability.</p>
-            <div class="project-tech">
-              <span class="badge">Python</span>
-              <span class="badge">Pytest</span>
-              <span class="badge badge-accent">Postman</span>
-              <span class="badge">JSON Schema</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3: CI/CD Pipeline -->
-        <div class="card project-card" data-category="cicd" id="project-cicd">
-          <div class="project-card-inner">
-            <div class="project-card-top">
-              <div class="project-icon">
-                <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1115.6 12 3.6 3.6 0 0112 15.6z"/></svg>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/DouglasZu" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
-                  <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-              </div>
-            </div>
-            <h3 data-i18n="projects.project3Title">CI/CD Quality Pipeline</h3>
-            <p data-i18n="projects.project3Desc">End-to-end CI/CD pipeline integrating automated tests at every stage. Configured Jenkins and GitHub Actions to run unit, integration, and E2E tests with automated reporting and Slack notifications.</p>
-            <div class="project-tech">
-              <span class="badge">Jenkins</span>
-              <span class="badge">GitHub Actions</span>
-              <span class="badge badge-accent">Docker</span>
-              <span class="badge">Allure Reports</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 4: Performance Dashboard -->
-        <div class="card project-card" data-category="performance" id="project-perf">
-          <div class="project-card-inner">
-            <div class="project-card-top">
-              <div class="project-icon">
-                <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z"/></svg>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/DouglasZu" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
-                  <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-              </div>
-            </div>
-            <h3 data-i18n="projects.project4Title">Performance Testing Dashboard</h3>
-            <p data-i18n="projects.project4Desc">Load and stress testing infrastructure using k6 with real-time monitoring via Grafana dashboards. Identified critical bottlenecks that improved API response times by 40% under load.</p>
-            <div class="project-tech">
-              <span class="badge">k6</span>
-              <span class="badge">Grafana</span>
-              <span class="badge badge-accent">InfluxDB</span>
-              <span class="badge">Docker</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================
-       5. QA ARTIFACTS
-       ============================ -->
-  <section class="section" id="artifacts">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label" data-i18n="artifacts.label">// QA Artifacts</span>
-        <h2 data-i18n="artifacts.title">Real <span class="text-gradient">QA Documentation</span></h2>
-        <div class="divider"></div>
-        <p data-i18n="artifacts.subtitle">Examples of structured QA work — from test cases to bug reports.</p>
-      </div>
-
-      <div class="artifacts-container">
-        <!-- Artifact Tabs -->
-        <div class="tabs reveal">
-          <button class="tab-btn artifact-tab-btn active" data-tab="tab-testcases" data-i18n="artifacts.tabTestCases">Test Cases</button>
-          <button class="tab-btn artifact-tab-btn" data-tab="tab-bugreports" data-i18n="artifacts.tabBugReports">Bug Reports</button>
-          <button class="tab-btn artifact-tab-btn" data-tab="tab-testplans" data-i18n="artifacts.tabTestPlans">Test Plans</button>
-          <button class="tab-btn artifact-tab-btn" data-tab="tab-reports" data-i18n="artifacts.tabReports">Automation Reports</button>
-        </div>
-
-        <!-- Tab: Test Cases -->
-        <div class="artifact-tab-content active" id="tab-testcases">
-          <div class="artifact-card reveal">
-            <div class="artifact-card-header">
-              <h4 data-i18n="artifacts.tcTitle">🧪 Login Flow — Test Cases</h4>
-              <span class="badge badge-success" data-i18n="artifacts.tcBadge">12 Cases</span>
-            </div>
-            <div class="artifact-card-body">
-              <table class="artifact-table">
-                <thead>
-                  <tr>
-                    <th data-i18n="artifacts.thId">ID</th>
-                    <th data-i18n="artifacts.thDescription">Description</th>
-                    <th data-i18n="artifacts.thPriority">Priority</th>
-                    <th data-i18n="artifacts.thStatus">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>TC-001</td>
-                    <td data-i18n="artifacts.tc001">Valid credentials login</td>
-                    <td><span class="severity-critical">Critical</span></td>
-                    <td><span class="status-pass" data-i18n="artifacts.statusPass">✓ Pass</span></td>
-                  </tr>
-                  <tr>
-                    <td>TC-002</td>
-                    <td data-i18n="artifacts.tc002">Invalid password error message</td>
-                    <td><span class="severity-major">Major</span></td>
-                    <td><span class="status-pass" data-i18n="artifacts.statusPass">✓ Pass</span></td>
-                  </tr>
-                  <tr>
-                    <td>TC-003</td>
-                    <td data-i18n="artifacts.tc003">Empty fields validation</td>
-                    <td><span class="severity-major">Major</span></td>
-                    <td><span class="status-pass" data-i18n="artifacts.statusPass">✓ Pass</span></td>
-                  </tr>
-                  <tr>
-                    <td>TC-004</td>
-                    <td data-i18n="artifacts.tc004">Account lockout after 5 failed attempts</td>
-                    <td><span class="severity-critical">Critical</span></td>
-                    <td><span class="status-pass" data-i18n="artifacts.statusPass">✓ Pass</span></td>
-                  </tr>
-                  <tr>
-                    <td>TC-005</td>
-                    <td data-i18n="artifacts.tc005">Remember me functionality</td>
-                    <td><span class="severity-minor">Minor</span></td>
-                    <td><span class="status-pass" data-i18n="artifacts.statusPass">✓ Pass</span></td>
-                  </tr>
-                  <tr>
-                    <td>TC-006</td>
-                    <td data-i18n="artifacts.tc006">SSO / OAuth2 redirect flow</td>
-                    <td><span class="severity-critical">Critical</span></td>
-                    <td><span class="status-pass" data-i18n="artifacts.statusPass">✓ Pass</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tab: Bug Reports -->
-        <div class="artifact-tab-content" id="tab-bugreports">
-          <div class="artifact-card reveal">
-            <div class="artifact-card-header">
-              <h4 data-i18n="artifacts.bugTitle">🐛 Bug Reports — Sprint 42</h4>
-              <span class="badge" style="background: rgba(239,68,68,0.15); color: var(--color-error); border-color: rgba(239,68,68,0.3);" data-i18n="artifacts.bugBadge">3 Critical</span>
-            </div>
-            <div class="artifact-card-body">
-              <table class="artifact-table">
-                <thead>
-                  <tr>
-                    <th data-i18n="artifacts.thId">ID</th>
-                    <th data-i18n="artifacts.thSummary">Summary</th>
-                    <th data-i18n="artifacts.thSeverity">Severity</th>
-                    <th data-i18n="artifacts.thStatus">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>BUG-1847</td>
-                    <td data-i18n="artifacts.bug1847">Payment fails silently on timeout &gt; 30s</td>
-                    <td><span class="severity-critical">Critical</span></td>
-                    <td><span class="status-pass" data-i18n="artifacts.statusFixed">✓ Fixed</span></td>
-                  </tr>
-                  <tr>
-                    <td>BUG-1852</td>
-                    <td data-i18n="artifacts.bug1852">Cart total doesn't update after coupon removal</td>
-                    <td><span class="severity-major">Major</span></td>
-                    <td><span class="status-pass" data-i18n="artifacts.statusFixed">✓ Fixed</span></td>
-                  </tr>
-                  <tr>
-                    <td>BUG-1856</td>
-                    <td data-i18n="artifacts.bug1856">Race condition in concurrent order placement</td>
-                    <td><span class="severity-critical">Critical</span></td>
-                    <td><span class="status-blocked" data-i18n="artifacts.statusInProgress">⚠ In Progress</span></td>
-                  </tr>
-                  <tr>
-                    <td>BUG-1861</td>
-                    <td data-i18n="artifacts.bug1861">Search results inconsistent with special chars</td>
-                    <td><span class="severity-minor">Minor</span></td>
-                    <td><span class="status-pass" data-i18n="artifacts.statusFixed">✓ Fixed</span></td>
-                  </tr>
-                  <tr>
-                    <td>BUG-1865</td>
-                    <td data-i18n="artifacts.bug1865">Session token not refreshed on password change</td>
-                    <td><span class="severity-critical">Critical</span></td>
-                    <td><span class="status-pass" data-i18n="artifacts.statusFixed">✓ Fixed</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tab: Test Plans -->
-        <div class="artifact-tab-content" id="tab-testplans">
-          <div class="artifact-card reveal">
-            <div class="artifact-card-header">
-              <h4 data-i18n="artifacts.tpTitle">📋 Test Plan — E-Commerce Release v3.2</h4>
-              <span class="badge badge-accent" data-i18n="artifacts.tpBadge">Active</span>
-            </div>
-            <div class="artifact-card-body" style="font-size: var(--text-sm); color: var(--text-secondary); line-height: var(--leading-relaxed);">
-              <p><strong style="color: var(--text-primary);" data-i18n="artifacts.tpObjectiveLabel">Objective:</strong> <span data-i18n="artifacts.tpObjective">Validate all critical user journeys for the v3.2 release including new payment provider integration and redesigned checkout flow.</span></p>
-              <br>
-              <p><strong style="color: var(--text-primary);" data-i18n="artifacts.tpScopeLabel">Scope:</strong></p>
-              <ul style="padding-left: var(--space-5); margin: var(--space-2) 0;">
-                <li style="margin-bottom: var(--space-1);" data-i18n="artifacts.tpScope1">✅ Functional testing — checkout, payments, cart</li>
-                <li style="margin-bottom: var(--space-1);" data-i18n="artifacts.tpScope2">✅ Integration testing — payment gateway API</li>
-                <li style="margin-bottom: var(--space-1);" data-i18n="artifacts.tpScope3">✅ Regression testing — existing features</li>
-                <li style="margin-bottom: var(--space-1);" data-i18n="artifacts.tpScope4">✅ Performance testing — checkout under load</li>
-                <li style="margin-bottom: var(--space-1);" data-i18n="artifacts.tpScope5">⬜ Security testing — PCI compliance checks</li>
+          <div class="skills-groups stagger-children">
+            <article class="skill-group card">
+              <div class="skill-group-heading"><h4 data-i18n="skills.professional">Experiência profissional</h4><span class="experience-badge badge-professional" data-i18n="skills.professionalBadge">Experiência profissional</span></div>
+              <ul class="tech-list" aria-label="Tecnologias com experiência profissional" data-i18n-aria="skills.professionalAria">
+                <li>Playwright</li><li>TypeScript</li><li>Postman</li><li>Selenium</li><li>SQL</li><li>Git</li><li>Jira</li><li>Jenkins</li><li>CI/CD</li><li>Scrum</li><li>Kanban</li>
               </ul>
-              <br>
-              <p><strong style="color: var(--text-primary);" data-i18n="artifacts.tpMetricsLabel">Test Metrics:</strong></p>
-              <ul style="padding-left: var(--space-5); margin: var(--space-2) 0;">
-                <li style="margin-bottom: var(--space-1);" data-i18n="artifacts.tpMetric1">Total test cases: <span style="color: var(--color-primary);">247</span></li>
-                <li style="margin-bottom: var(--space-1);" data-i18n="artifacts.tpMetric2">Automated: <span style="color: var(--color-success);">189 (76%)</span></li>
-                <li style="margin-bottom: var(--space-1);" data-i18n="artifacts.tpMetric3">Manual: <span style="color: var(--color-warning);">58 (24%)</span></li>
-                <li style="margin-bottom: var(--space-1);" data-i18n="artifacts.tpMetric4">Pass rate: <span style="color: var(--color-success);">96.4%</span></li>
+            </article>
+            <article class="skill-group card">
+              <div class="skill-group-heading"><h4 data-i18n="skills.practical">Projetos práticos</h4><span class="experience-badge badge-practical" data-i18n="skills.practicalBadge">Projeto prático</span></div>
+              <ul class="tech-list" aria-label="Tecnologias usadas em projetos práticos" data-i18n-aria="skills.practicalAria">
+                <li>GitHub Actions</li><li>Cypress</li><li>Pytest</li><li>Rest Assured</li><li>Docker</li><li>k6</li>
               </ul>
-            </div>
+            </article>
+            <article class="skill-group card">
+              <div class="skill-group-heading"><h4 data-i18n="skills.learning">Em aprendizado</h4><span class="experience-badge badge-learning" data-i18n="skills.learningBadge">Em aprendizado</span></div>
+              <ul class="tech-list" aria-label="Tecnologias em aprendizado" data-i18n-aria="skills.learningAria">
+                <li>JMeter</li><li>JUnit</li><li>Grafana</li><li>Kibana</li>
+              </ul>
+            </article>
           </div>
-        </div>
+        </section>
+      </div>
+    </section>
 
-        <!-- Tab: Automation Reports -->
-        <div class="artifact-tab-content" id="tab-reports">
-          <div class="artifact-card reveal">
-            <div class="artifact-card-header">
-              <h4 data-i18n="artifacts.arTitle">📊 Automation Report — Nightly Run</h4>
-              <span class="badge badge-success" data-i18n="artifacts.arBadge">Passed</span>
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label" data-i18n="projects.label">// Portfólio técnico</span>
+          <h2 id="projects-title" data-i18n="projects.title">Projetos Práticos e <span class="text-gradient">Estudos de Caso</span></h2>
+          <div class="divider"></div>
+          <p data-i18n="projects.subtitle">Projetos demonstrativos de automação, testes de API, CI/CD e estratégia de qualidade desenvolvidos para aplicar conceitos e boas práticas de QA.</p>
+        </div>
+        <div class="project-tabs" role="group" aria-label="Filtrar projetos" data-i18n-aria="projects.filterAria">
+          <button class="tab-btn filter-btn active" type="button" data-filter="all" data-i18n="projects.filterAll">Todos</button>
+          <button class="tab-btn filter-btn" type="button" data-filter="automation" data-i18n="projects.filterAutomation">Automação</button>
+          <button class="tab-btn filter-btn" type="button" data-filter="api" data-i18n="projects.filterApi">API</button>
+          <button class="tab-btn filter-btn" type="button" data-filter="cicd" data-i18n="projects.filterCicd">CI/CD</button>
+          <button class="tab-btn filter-btn" type="button" data-filter="performance" data-i18n="projects.filterPerformance">Performance</button>
+        </div>
+        <div class="projects-grid stagger-children">
+          <article class="card project-card" data-category="automation">
+            <div class="project-card-inner">
+              <div class="project-meta"><span class="experience-badge badge-practical" data-i18n="projects.practicalBadge">Projeto prático</span><span class="project-status status-building" data-i18n="projects.inDevelopment">Em desenvolvimento</span></div>
+              <h3 data-i18n="projects.project1Title">Framework de Automação Web</h3>
+              <p data-i18n="projects.project1Desc">Projeto demonstrativo de automação Web utilizando Playwright ou Cypress com TypeScript, organização por camadas, Page Objects, fixtures, dados reutilizáveis, relatórios e execução em CI/CD.</p>
+              <ul class="project-tech"><li>Playwright</li><li>Cypress</li><li>TypeScript</li><li>CI/CD</li></ul>
+              <div class="project-actions"><button class="btn btn-secondary btn-small" type="button" disabled data-i18n="projects.viewCode">Ver código</button><button class="btn btn-quiet btn-small" type="button" disabled data-i18n="projects.viewDocs">Ver documentação</button></div>
+              <small data-i18n="projects.repositoryPending">README e repositório específico serão publicados quando o projeto estiver disponível.</small>
             </div>
-            <div class="artifact-card-body">
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-6);">
-                <div class="stat-item">
-                  <div class="stat-number" style="font-size: var(--text-3xl);">247</div>
-                  <div class="stat-label" data-i18n="artifacts.arTotalTests">Total Tests</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number" style="font-size: var(--text-3xl); -webkit-text-fill-color: var(--color-success); color: var(--color-success); background: none;">238</div>
-                  <div class="stat-label" data-i18n="artifacts.arPassed">Passed</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number" style="font-size: var(--text-3xl); -webkit-text-fill-color: var(--color-error); color: var(--color-error); background: none;">6</div>
-                  <div class="stat-label" data-i18n="artifacts.arFailed">Failed</div>
-                </div>
-                <div class="stat-item">
-                  <div class="stat-number" style="font-size: var(--text-3xl); -webkit-text-fill-color: var(--color-warning); color: var(--color-warning); background: none;">3</div>
-                  <div class="stat-label" data-i18n="artifacts.arSkipped">Skipped</div>
-                </div>
-              </div>
-              <div style="background: var(--bg-tertiary); border-radius: var(--radius-md); overflow: hidden; height: 8px; margin-bottom: var(--space-3);">
-                <div style="display: flex; height: 100%;">
-                  <div style="width: 96.4%; background: var(--color-success);"></div>
-                  <div style="width: 2.4%; background: var(--color-error);"></div>
-                  <div style="width: 1.2%; background: var(--color-warning);"></div>
-                </div>
-              </div>
-              <p style="font-size: var(--text-xs); color: var(--text-tertiary); text-align: center;" data-i18n="artifacts.arFooter">
-                Execution time: 42.3s · Environment: staging · Browser: Chrome 120
-              </p>
+          </article>
+          <article class="card project-card" data-category="api">
+            <div class="project-card-inner">
+              <div class="project-meta"><span class="experience-badge badge-practical" data-i18n="projects.practicalBadge">Projeto prático</span><span class="project-status status-building" data-i18n="projects.inDevelopment">Em desenvolvimento</span></div>
+              <h3 data-i18n="projects.project2Title">Automação de Testes de API</h3>
+              <p data-i18n="projects.project2Desc">Projeto prático de automação de APIs cobrindo métodos HTTP, cenários positivos e negativos, validação de schema, autenticação, dados parametrizados e execução automatizada.</p>
+              <ul class="project-tech"><li>Postman</li><li>Pytest</li><li>Rest Assured</li><li>JSON Schema</li></ul>
+              <div class="project-actions"><button class="btn btn-secondary btn-small" type="button" disabled data-i18n="projects.viewCode">Ver código</button><button class="btn btn-quiet btn-small" type="button" disabled data-i18n="projects.viewDocs">Ver documentação</button></div>
+              <small data-i18n="projects.repositoryPending">README e repositório específico serão publicados quando o projeto estiver disponível.</small>
             </div>
-          </div>
+          </article>
+          <article class="card project-card" data-category="cicd">
+            <div class="project-card-inner">
+              <div class="project-meta"><span class="experience-badge badge-practical" data-i18n="projects.practicalBadge">Projeto prático</span><span class="project-status status-planned" data-i18n="projects.planned">Planejado</span></div>
+              <h3 data-i18n="projects.project3Title">Pipeline de Qualidade CI/CD</h3>
+              <p data-i18n="projects.project3Desc">Projeto demonstrativo de integração de testes automatizados com GitHub Actions, incluindo execução de suítes, publicação de resultados e bloqueio do pipeline em falhas críticas.</p>
+              <ul class="project-tech"><li>GitHub Actions</li><li>Playwright</li><li>Artifacts</li><li>CI/CD</li></ul>
+              <div class="project-actions"><button class="btn btn-secondary btn-small" type="button" disabled data-i18n="projects.viewCode">Ver código</button><button class="btn btn-quiet btn-small" type="button" disabled data-i18n="projects.viewDocs">Ver documentação</button></div>
+              <small data-i18n="projects.repositoryPending">README e repositório específico serão publicados quando o projeto estiver disponível.</small>
+            </div>
+          </article>
+          <article class="card project-card" data-category="performance">
+            <div class="project-card-inner">
+              <div class="project-meta"><span class="experience-badge badge-practical" data-i18n="projects.practicalBadge">Projeto prático</span><span class="project-status status-planned" data-i18n="projects.planned">Planejado</span></div>
+              <h3 data-i18n="projects.project4Title">Laboratório de Testes de Performance</h3>
+              <p data-i18n="projects.project4Desc">Laboratório de testes de carga com k6 criado para estudar thresholds, tempo de resposta, throughput, taxa de erros e comportamento da aplicação sob diferentes níveis de carga.</p>
+              <ul class="project-tech"><li>k6</li><li>JavaScript</li><li>Thresholds</li><li>Docker</li></ul>
+              <div class="project-actions"><button class="btn btn-secondary btn-small" type="button" disabled data-i18n="projects.viewCode">Ver código</button><button class="btn btn-quiet btn-small" type="button" disabled data-i18n="projects.viewDocs">Ver documentação</button></div>
+              <small data-i18n="projects.repositoryPending">README e repositório específico serão publicados quando o projeto estiver disponível.</small>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================
-       6. EXPERIENCE / TIMELINE
-       ============================ -->
-  <section class="section" id="experience">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label" data-i18n="experience.label">// Career Journey</span>
-        <h2 data-i18n="experience.title">Professional <span class="text-gradient">Experience</span></h2>
-        <div class="divider"></div>
-      </div>
-
-      <div class="experience-container">
-        <div class="timeline">
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-date" data-i18n="experience.job1Date">06/2021 — 06/2026</div>
-              <div class="timeline-title" data-i18n="experience.job1Title">Quality Assurance Analyst</div>
-              <div class="timeline-company" data-i18n="experience.job1Company">Eduzz · Full-time</div>
-              <div class="timeline-description" data-i18n="experience.job1Desc">
-                Development and maintenance of automated tests with Playwright and Postman for API and UI (Web and Desktop) validation. Implementation of integration and regression tests, ensuring release stability. Active participation in the agile development cycle (Scrum), collaborating with developers and POs to define acceptance and quality criteria. Use of Git for versioning and continuous integration (CI/CD). Support in analyzing and solving bugs, using SQL to investigate database issues.
-              </div>
-              <div class="timeline-tags">
-                <span class="badge">Playwright</span>
-                <span class="badge">Postman</span>
-                <span class="badge">Git</span>
-                <span class="badge">SQL</span>
-                <span class="badge">Scrum</span>
-                <span class="badge badge-accent">CI/CD</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-date" data-i18n="experience.job2Date">01/2021 — 05/2021</div>
-              <div class="timeline-title" data-i18n="experience.job2Title">Mid-Level Support Analyst</div>
-              <div class="timeline-company" data-i18n="experience.job2Company">Eduzz · Full-time</div>
-              <div class="timeline-description" data-i18n="experience.job2Desc">
-                Technical customer support, analyzing cases to open improvements, incidents, and problems. Analyzes performed using SQL to investigate issues. Opening Jira cards and participating in defect meetings to address identified problems.
-              </div>
-              <div class="timeline-tags">
-                <span class="badge">SQL</span>
-                <span class="badge">Jira</span>
-                <span class="badge">Support Analysis</span>
-                <span class="badge badge-accent">Defect Meetings</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <div class="timeline-date" data-i18n="experience.job3Date">09/2019 — 12/2020</div>
-              <div class="timeline-title" data-i18n="experience.job3Title">Junior Support Analyst</div>
-              <div class="timeline-company" data-i18n="experience.job3Company">Eduzz · Full-time</div>
-              <div class="timeline-description" data-i18n="experience.job3Desc">
-                Customer service via email and chat. Configuration of pixels, webhooks, and platform products.
-              </div>
-              <div class="timeline-tags">
-                <span class="badge">Customer Service</span>
-                <span class="badge">Webhooks</span>
-                <span class="badge badge-accent">Pixels</span>
-              </div>
-            </div>
-          </div>
+    <section class="section" id="artifacts" aria-labelledby="artifacts-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label" data-i18n="artifacts.label">// Evidências de abordagem</span>
+          <h2 id="artifacts-title" data-i18n="artifacts.title">Artefatos Demonstrativos <span class="text-gradient">de QA</span></h2>
+          <div class="divider"></div>
+          <p data-i18n="artifacts.disclaimer">Os exemplos abaixo utilizam cenários fictícios e foram criados exclusivamente para demonstrar minha abordagem de qualidade. Não contêm dados, código ou informações confidenciais de empregadores.</p>
+        </div>
+        <div class="artifact-grid stagger-children">
+          <article class="artifact-summary card"><span class="artifact-kicker">CT-LOGIN-001</span><h3 data-i18n="artifacts.testCaseTitle">Caso de teste — autenticação</h3><p data-i18n="artifacts.testCaseSummary">Cenário completo com pré-condições, dados, passos, prioridade e resultado esperado.</p><button class="btn btn-secondary btn-small dialog-open" type="button" data-dialog="test-case-dialog" data-i18n="artifacts.open">Abrir artefato</button></article>
+          <article class="artifact-summary card"><span class="artifact-kicker">BUG-PAY-014</span><h3 data-i18n="artifacts.bugTitle">Relatório de bug — pagamento</h3><p data-i18n="artifacts.bugSummary">Registro reprodutível com severidade, evidências e request/response fictícios.</p><button class="btn btn-secondary btn-small dialog-open" type="button" data-dialog="bug-dialog" data-i18n="artifacts.open">Abrir artefato</button></article>
+          <article class="artifact-summary card"><span class="artifact-kicker">TP-CHECKOUT-01</span><h3 data-i18n="artifacts.planTitle">Plano de teste — checkout</h3><p data-i18n="artifacts.planSummary">Estratégia baseada em risco, incluindo escopo, ambiente e critérios de entrada e saída.</p><button class="btn btn-secondary btn-small dialog-open" type="button" data-dialog="test-plan-dialog" data-i18n="artifacts.open">Abrir artefato</button></article>
+          <article class="artifact-summary card"><span class="artifact-kicker">AR-DEMO-01</span><h3 data-i18n="artifacts.reportTitle">Relatório de automação</h3><p data-i18n="artifacts.reportSummary">Exemplo fictício de leitura de resultados, ambiente e informações de execução.</p><button class="btn btn-secondary btn-small dialog-open" type="button" data-dialog="automation-dialog" data-i18n="artifacts.open">Abrir artefato</button></article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================
-       7. HOW I TEST (QA MINDSET)
-       ============================ -->
-  <section class="section" id="mindset">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label" data-i18n="mindset.label">// QA Philosophy</span>
-        <h2 data-i18n="mindset.title">How I <span class="text-gradient">Approach Quality</span></h2>
-        <div class="divider"></div>
-        <p data-i18n="mindset.subtitle">Quality is not just about finding bugs — it's about building confidence in every release.</p>
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="section-header reveal"><span class="section-label" data-i18n="experience.label">// Trajetória</span><h2 id="experience-title" data-i18n="experience.title">Experiência <span class="text-gradient">Profissional</span></h2><div class="divider"></div></div>
+        <div class="experience-container">
+          <article class="timeline-item reveal"><div class="timeline-dot" aria-hidden="true"></div><div class="timeline-content"><div class="timeline-date" data-i18n="experience.job1Date">06/2021 – 06/2026</div><h3 class="timeline-title" data-i18n="experience.job1Title">Analista de Qualidade</h3><div class="timeline-company">Eduzz · <span data-i18n="experience.fullTime">Tempo integral</span></div><ul class="experience-list"><li data-i18n="experience.job1Item1">Desenvolvimento e manutenção de testes automatizados com Playwright e TypeScript para APIs e aplicações Web/Desktop.</li><li data-i18n="experience.job1Item2">Contribuição na manutenção e evolução de uma suíte com mais de 600 cenários automatizados.</li><li data-i18n="experience.job1Item3">Participação na validação de aproximadamente 15 a 20 releases mensais, priorizando fluxos críticos e riscos de regressão.</li><li data-i18n="experience.job1Item4">Planejamento e execução de testes funcionais, exploratórios, integrados e de regressão.</li><li data-i18n="experience.job1Item5">Validação de APIs REST com Postman, analisando status HTTP, payloads, contratos e regras de negócio.</li><li data-i18n="experience.job1Item6">Investigação de defeitos e inconsistências utilizando SQL, logs e evidências técnicas.</li><li data-i18n="experience.job1Item7">Participação em refinamentos e definição de critérios de aceitação com desenvolvimento e produto.</li><li data-i18n="experience.job1Item8">Atuação em fluxos de pagamentos, Pix Automático, PSPs e webhooks.</li><li data-i18n="experience.job1Item9">Versionamento de projetos com Git e execução de testes em fluxos de CI/CD utilizando Jenkins.</li></ul></div></article>
+          <article class="timeline-item reveal"><div class="timeline-dot" aria-hidden="true"></div><div class="timeline-content"><div class="timeline-date" data-i18n="experience.job2Date">01/2021 – 05/2021</div><h3 class="timeline-title" data-i18n="experience.job2Title">Analista de Suporte Pleno</h3><div class="timeline-company">Eduzz · <span data-i18n="experience.fullTime">Tempo integral</span></div><ul class="experience-list"><li data-i18n="experience.job2Item1">Atendimento técnico e investigação de problemas reportados por clientes.</li><li data-i18n="experience.job2Item2">Análise de inconsistências utilizando SQL.</li><li data-i18n="experience.job2Item3">Registro de incidentes, problemas e solicitações de melhoria no Jira.</li><li data-i18n="experience.job2Item4">Participação em triagens e reuniões de defeitos.</li><li data-i18n="experience.job2Item5">Documentação de cenários e evidências para apoiar a investigação técnica.</li></ul></div></article>
+          <article class="timeline-item reveal"><div class="timeline-dot" aria-hidden="true"></div><div class="timeline-content"><div class="timeline-date" data-i18n="experience.job3Date">09/2019 – 12/2020</div><h3 class="timeline-title" data-i18n="experience.job3Title">Analista de Suporte Júnior</h3><div class="timeline-company">Eduzz · <span data-i18n="experience.fullTime">Tempo integral</span></div><ul class="experience-list"><li data-i18n="experience.job3Item1">Atendimento aos clientes por e-mail e chat.</li><li data-i18n="experience.job3Item2">Configuração e suporte a pixels, webhooks e produtos da plataforma.</li><li data-i18n="experience.job3Item3">Análise inicial de problemas e encaminhamento para equipes técnicas.</li><li data-i18n="experience.job3Item4">Desenvolvimento de conhecimento sobre regras de negócio e experiência do usuário.</li></ul></div></article>
+        </div>
+
+        <section class="mindset-compact" id="mindset" aria-labelledby="mindset-title">
+          <div class="subsection-heading reveal"><span class="section-label" data-i18n="mindset.label">// Processo</span><h3 id="mindset-title" data-i18n="mindset.title">Como eu abordo <span class="text-gradient">qualidade</span></h3></div>
+          <ol class="mindset-grid stagger-children">
+            <li class="card"><span>01</span><h4 data-i18n="mindset.step1Title">Compreender</h4><p data-i18n="mindset.step1Desc">Analiso requisitos, histórias de usuário, critérios de aceitação, integrações e riscos antes de definir os testes.</p></li>
+            <li class="card"><span>02</span><h4 data-i18n="mindset.step2Title">Planejar estrategicamente</h4><p data-i18n="mindset.step2Desc">Organizo a estratégia com base no risco, priorizando fluxos críticos, cenários negativos, limites e pontos de integração.</p></li>
+            <li class="card"><span>03</span><h4 data-i18n="mindset.step3Title">Automatizar com critério</h4><p data-i18n="mindset.step3Desc">Automatizo cenários repetitivos, críticos e determinísticos, mantendo testes exploratórios e validações subjetivas na abordagem manual.</p></li>
+            <li class="card"><span>04</span><h4 data-i18n="mindset.step4Title">Integrar cedo</h4><p data-i18n="mindset.step4Desc">Busco integrar validações automatizadas ao pipeline nas primeiras etapas da entrega, executando diferentes suítes de acordo com o risco e o momento do desenvolvimento.</p></li>
+            <li class="card"><span>05</span><h4 data-i18n="mindset.step5Title">Monitorar e melhorar</h4><p data-i18n="mindset.step5Desc">Acompanho resultados das execuções, defeitos recorrentes e feedback do time para identificar oportunidades de melhoria na cobertura e no processo de qualidade.</p></li>
+          </ol>
+        </section>
       </div>
+    </section>
 
-      <div class="mindset-grid stagger-children">
-        <div class="mindset-step hover-lift">
-          <div class="mindset-step-number">01</div>
-          <div>
-            <h4 data-i18n="mindset.step1Title">Understand</h4>
-            <p data-i18n="mindset.step1Desc">Deep-dive into requirements, user stories, and acceptance criteria. I ask the right questions before writing a single test — understanding the "why" behind features drives smarter testing.</p>
-          </div>
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-header reveal"><span class="section-label" data-i18n="contact.label">// Contato</span><h2 id="contact-title" data-i18n="contact.title">Vamos <span class="text-gradient">conversar?</span></h2><div class="divider"></div><p data-i18n="contact.subtitle">Para oportunidades, projetos ou troca de experiências em qualidade, escolha o canal que preferir.</p></div>
+        <div class="contact-actions reveal">
+          <a href="mailto:douglaszulim@gmail.com" class="contact-link"><span data-i18n="contact.email">E-mail</span><strong>douglaszulim@gmail.com</strong></a>
+          <a href="https://www.linkedin.com/in/douglaszulim/" target="_blank" rel="noopener noreferrer" class="contact-link"><span>LinkedIn</span><strong>/in/douglaszulim</strong></a>
+          <a href="https://github.com/DouglasZu" target="_blank" rel="noopener noreferrer" class="contact-link"><span>GitHub</span><strong>@DouglasZu</strong></a>
+          <a href="output/pdf/curriculo-douglas-zulim.pdf" download class="contact-link"><span data-i18n="contact.resume">Currículo</span><strong data-i18n="contact.downloadPdf">Baixar PDF</strong></a>
         </div>
-
-        <div class="mindset-step hover-lift">
-          <div class="mindset-step-number">02</div>
-          <div>
-            <h4 data-i18n="mindset.step2Title">Plan Strategically</h4>
-            <p data-i18n="mindset.step2Desc">Design test strategies that balance risk with coverage. I prioritize what matters most — critical paths, edge cases, and integration points — using risk-based testing approaches.</p>
-          </div>
-        </div>
-
-        <div class="mindset-step hover-lift">
-          <div class="mindset-step-number">03</div>
-          <div>
-            <h4 data-i18n="mindset.step3Title">Automate Smartly</h4>
-            <p data-i18n="mindset.step3Desc">Not everything needs automation. I automate regression, smoke tests, and repetitive validations while keeping exploratory testing manual. The right tool for the right job.</p>
-          </div>
-        </div>
-
-        <div class="mindset-step hover-lift">
-          <div class="mindset-step-number">04</div>
-          <div>
-            <h4 data-i18n="mindset.step4Title">Integrate Early</h4>
-            <p data-i18n="mindset.step4Desc">Shift-left testing — I embed quality checks into the CI/CD pipeline from day one. Every commit triggers automated tests, catching issues when they're cheapest to fix.</p>
-          </div>
-        </div>
-
-        <div class="mindset-step hover-lift">
-          <div class="mindset-step-number">05</div>
-          <div>
-            <h4 data-i18n="mindset.step5Title">Monitor & Improve</h4>
-            <p data-i18n="mindset.step5Desc">Quality doesn't stop at deployment. I set up monitoring, track test metrics, and continuously refine the testing process based on real production data and team feedback.</p>
-          </div>
-        </div>
+        <p class="contact-note" data-i18n="contact.note">O formulário foi removido para não depender do aplicativo de e-mail do visitante nem armazenar dados sem uma integração segura configurada.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ============================
-       8. CONTACT
-       ============================ -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label" data-i18n="contact.label">// Let's Connect</span>
-        <h2 data-i18n="contact.title">Get in <span class="text-gradient">Touch</span></h2>
-        <div class="divider"></div>
-        <p data-i18n="contact.subtitle">Interested in working together? I'm always open to discussing new projects, opportunities, and ideas.</p>
-      </div>
-
-      <div class="contact-grid reveal">
-        <!-- Contact Info -->
-        <div class="contact-info">
-          <h3 data-i18n="contact.reachOut">Reach Out</h3>
-          <p data-i18n="contact.reachOutDesc">Whether you have a question or just want to say hi, feel free to reach out. I'll get back to you as soon as possible.</p>
-
-          <a href="mailto:douglaszulim@gmail.com" class="contact-link">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm16 2l-8 5-8-5v2l8 5 8-5V6z"/></svg>
-            <span>douglaszulim@gmail.com</span>
-          </a>
-
-          <a href="https://www.linkedin.com/in/douglaszulim/" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            <span>LinkedIn</span>
-          </a>
-
-          <a href="https://github.com/DouglasZu" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            <span>GitHub</span>
-          </a>
-
-          <a href="https://discord.gg/_zulim" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-            <span>Discord</span>
-          </a>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="contact-form-card">
-          <form id="contact-form" onsubmit="return sendContactForm(event)">
-            <div class="form-group">
-              <label class="form-label" for="contact-name" data-i18n="contact.formName">Name</label>
-              <input type="text" class="form-input" id="contact-name" name="name" placeholder="Your name" data-i18n-placeholder="contact.formNamePlaceholder" required autocomplete="name">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="contact-email" data-i18n="contact.formEmail">Email</label>
-              <input type="email" class="form-input" id="contact-email" name="email" placeholder="your@email.com" data-i18n-placeholder="contact.formEmailPlaceholder" required autocomplete="email">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="contact-message" data-i18n="contact.formMessage">Message</label>
-              <textarea class="form-textarea" id="contact-message" name="message" placeholder="Tell me about your project or opportunity..." data-i18n-placeholder="contact.formMessagePlaceholder" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-              <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-              <span data-i18n="contact.formSubmit">Send Message</span>
-            </button>
-          </form>
-
-          <script>
-            function sendContactForm(e) {
-              e.preventDefault();
-              const name = document.getElementById('contact-name').value.trim();
-              const email = document.getElementById('contact-email').value.trim();
-              const message = document.getElementById('contact-message').value.trim();
-
-              const subject = encodeURIComponent('Contact from Portfolio - ' + name);
-              const body = encodeURIComponent(
-                'Name: ' + name + '\n' +
-                'Email: ' + email + '\n\n' +
-                'Message:\n' + message
-              );
-
-              window.location.href = 'mailto:douglaszulim@gmail.com?subject=' + subject + '&body=' + body;
-              return false;
-            }
-          </script>
-        </div>
-      </div>
-    </div>
-  </section>
-
+    </section>
   </main>
 
-  <!-- ============================
-       FOOTER
-       ============================ -->
-  <footer class="footer">
-    <div class="container">
-      <p data-i18n="footer.built">
-        Built with <span class="heart">❤</span> by <strong>Douglas Zulim</strong> · 2026
-      </p>
-      <p style="margin-top: var(--space-2); font-size: var(--text-xs);" data-i18n="footer.quote">
-        Quality is not an act, it is a habit. — Aristotle
-      </p>
-    </div>
-  </footer>
+  <footer class="footer"><div class="container"><p data-i18n="footer.built">Desenvolvido por <strong>Douglas Zulim</strong> · 2026</p><p data-i18n="footer.note">Conteúdo profissional apresentado com contexto e transparência.</p></div></footer>
+  <button class="scroll-top" id="scroll-top" type="button" aria-label="Voltar ao topo" data-i18n-aria="accessibility.scrollTop"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg></button>
 
-  <!-- Scroll to Top -->
-  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
-    <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
-  </button>
+  <dialog class="artifact-dialog" id="test-case-dialog" aria-labelledby="test-case-dialog-title"><div class="dialog-header"><div><span class="artifact-kicker">CT-LOGIN-001</span><h2 id="test-case-dialog-title" data-i18n="artifactDetails.testCaseTitle">Caso de teste — autenticação com credenciais válidas</h2></div><button class="dialog-close" type="button" aria-label="Fechar" data-i18n-aria="accessibility.close">×</button></div><div class="dialog-body"><p class="demo-notice" data-i18n="artifactDetails.demoNotice">Exemplo fictício para demonstração.</p><dl class="artifact-details"><div><dt data-i18n="artifactDetails.preconditions">Pré-condições</dt><dd data-i18n="artifactDetails.tcPreconditions">Usuário ativo e página de login disponível no ambiente de teste.</dd></div><div><dt data-i18n="artifactDetails.steps">Passos</dt><dd data-i18n="artifactDetails.tcSteps">1. Acessar o login; 2. Informar e-mail e senha válidos; 3. Selecionar “Entrar”.</dd></div><div><dt data-i18n="artifactDetails.data">Dados</dt><dd data-i18n="artifactDetails.tcData">qa.demo@example.test / senha fictícia válida.</dd></div><div><dt data-i18n="artifactDetails.expected">Resultado esperado</dt><dd data-i18n="artifactDetails.tcExpected">Autenticação concluída, sessão criada e redirecionamento para a área inicial.</dd></div><div><dt data-i18n="artifactDetails.priority">Prioridade</dt><dd data-i18n="artifactDetails.high">Alta</dd></div><div><dt data-i18n="artifactDetails.status">Status</dt><dd data-i18n="artifactDetails.ready">Pronto para execução</dd></div></dl></div></dialog>
 
-  <!-- Scripts -->
+  <dialog class="artifact-dialog" id="bug-dialog" aria-labelledby="bug-dialog-title"><div class="dialog-header"><div><span class="artifact-kicker">BUG-PAY-014</span><h2 id="bug-dialog-title" data-i18n="artifactDetails.bugTitle">Pagamento aprovado retorna mensagem de falha</h2></div><button class="dialog-close" type="button" aria-label="Fechar" data-i18n-aria="accessibility.close">×</button></div><div class="dialog-body"><p class="demo-notice" data-i18n="artifactDetails.demoNotice">Exemplo fictício para demonstração.</p><dl class="artifact-details"><div><dt data-i18n="artifactDetails.environment">Ambiente</dt><dd>Staging · Chrome · Windows 11</dd></div><div><dt data-i18n="artifactDetails.version">Versão</dt><dd>demo-1.4.0</dd></div><div><dt data-i18n="artifactDetails.preconditions">Pré-condições</dt><dd data-i18n="artifactDetails.bugPreconditions">Carrinho com produto fictício e usuário autenticado.</dd></div><div><dt data-i18n="artifactDetails.reproduction">Passos para reprodução</dt><dd data-i18n="artifactDetails.bugSteps">1. Abrir checkout; 2. Selecionar Pix; 3. Confirmar pagamento simulado; 4. Observar o retorno.</dd></div><div><dt data-i18n="artifactDetails.actual">Resultado atual</dt><dd data-i18n="artifactDetails.bugActual">A API responde 200/APPROVED, mas a interface exibe “Pagamento não concluído”.</dd></div><div><dt data-i18n="artifactDetails.expected">Resultado esperado</dt><dd data-i18n="artifactDetails.bugExpected">A interface confirma o pagamento e apresenta o identificador do pedido.</dd></div><div><dt data-i18n="artifactDetails.severity">Severidade</dt><dd data-i18n="artifactDetails.critical">Crítica</dd></div><div><dt data-i18n="artifactDetails.priority">Prioridade</dt><dd data-i18n="artifactDetails.high">Alta</dd></div><div><dt data-i18n="artifactDetails.frequency">Frequência</dt><dd>3/3</dd></div><div><dt data-i18n="artifactDetails.evidence">Evidências</dt><dd data-i18n="artifactDetails.bugEvidence">Captura fictícia da interface e correlação de logs.</dd></div></dl><pre><code>POST /demo/payments { "method": "PIX", "orderId": "ORDER-DEMO-42" }
+HTTP 200 { "status": "APPROVED", "paymentId": "PAY-DEMO-99" }</code></pre></div></dialog>
+
+  <dialog class="artifact-dialog" id="test-plan-dialog" aria-labelledby="test-plan-dialog-title"><div class="dialog-header"><div><span class="artifact-kicker">TP-CHECKOUT-01</span><h2 id="test-plan-dialog-title" data-i18n="artifactDetails.planTitle">Plano de teste — checkout demonstrativo</h2></div><button class="dialog-close" type="button" aria-label="Fechar" data-i18n-aria="accessibility.close">×</button></div><div class="dialog-body"><p class="demo-notice" data-i18n="artifactDetails.demoNotice">Exemplo fictício para demonstração.</p><dl class="artifact-details"><div><dt data-i18n="artifactDetails.objective">Objetivo</dt><dd data-i18n="artifactDetails.planObjective">Validar os fluxos críticos de checkout e a integração com um provedor de pagamento fictício.</dd></div><div><dt data-i18n="artifactDetails.scope">Escopo</dt><dd data-i18n="artifactDetails.planScope">Carrinho, cupom, checkout, Pix e retorno de status.</dd></div><div><dt data-i18n="artifactDetails.outScope">Fora do escopo</dt><dd data-i18n="artifactDetails.planOutScope">Chargeback, conciliação financeira e testes de produção.</dd></div><div><dt data-i18n="artifactDetails.risks">Riscos</dt><dd data-i18n="artifactDetails.planRisks">Duplicidade, perda de status e divergência de valores.</dd></div><div><dt data-i18n="artifactDetails.strategy">Estratégia</dt><dd data-i18n="artifactDetails.planStrategy">Testes funcionais, exploratórios, integração, regressão direcionada e automação dos fluxos determinísticos.</dd></div><div><dt data-i18n="artifactDetails.environment">Ambiente</dt><dd>Staging · API sandbox · Chrome/Firefox</dd></div><div><dt data-i18n="artifactDetails.testTypes">Tipos de teste</dt><dd data-i18n="artifactDetails.planTypes">API, Web, integração, regressão e exploratório.</dd></div><div><dt data-i18n="artifactDetails.entry">Critérios de entrada</dt><dd data-i18n="artifactDetails.planEntry">Build disponível, ambiente estável, dados e critérios de aceitação revisados.</dd></div><div><dt data-i18n="artifactDetails.exit">Critérios de saída</dt><dd data-i18n="artifactDetails.planExit">Fluxos críticos aprovados e nenhuma falha bloqueadora aberta.</dd></div><div><dt data-i18n="artifactDetails.dependencies">Dependências</dt><dd data-i18n="artifactDetails.planDependencies">Sandbox do PSP fictício, massa de dados e pipeline de testes.</dd></div></dl></div></dialog>
+
+  <dialog class="artifact-dialog" id="automation-dialog" aria-labelledby="automation-dialog-title"><div class="dialog-header"><div><span class="artifact-kicker">AR-DEMO-01</span><h2 id="automation-dialog-title" data-i18n="artifactDetails.reportTitle">Relatório de automação — execução demonstrativa</h2></div><button class="dialog-close" type="button" aria-label="Fechar" data-i18n-aria="accessibility.close">×</button></div><div class="dialog-body"><p class="demo-notice" data-i18n="artifactDetails.reportNotice">Números fictícios usados somente para demonstrar a estrutura do relatório.</p><dl class="artifact-details artifact-metrics"><div><dt data-i18n="artifactDetails.total">Total de testes</dt><dd>42</dd></div><div><dt data-i18n="artifactDetails.passed">Aprovados</dt><dd>39</dd></div><div><dt data-i18n="artifactDetails.failed">Falhas</dt><dd>2</dd></div><div><dt data-i18n="artifactDetails.skipped">Ignorados</dt><dd>1</dd></div><div><dt data-i18n="artifactDetails.duration">Tempo de execução</dt><dd>3m 18s</dd></div><div><dt data-i18n="artifactDetails.environment">Ambiente</dt><dd>Staging</dd></div><div><dt data-i18n="artifactDetails.browser">Navegador</dt><dd>Chromium</dd></div><div><dt data-i18n="artifactDetails.date">Data</dt><dd data-i18n="artifactDetails.sampleDate">Data fictícia</dd></div><div><dt data-i18n="artifactDetails.pipeline">Pipeline/relatório</dt><dd data-i18n="artifactDetails.unavailable">Indisponível — projeto ainda não publicado.</dd></div></dl></div></dialog>
+
   <script src="js/particles.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/navigation.js"></script>
@@ -996,6 +300,5 @@
   <script src="js/filters.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
-
 </body>
 </html>
