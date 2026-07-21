@@ -91,7 +91,7 @@ story = [
     Paragraph("QA Engineer | Automação, APIs e Confiabilidade", styles["Role"]),
     Paragraph(
         "Sorocaba-SP, Brasil &nbsp; | &nbsp; douglaszulim@gmail.com &nbsp; | &nbsp; "
-        "linkedin.com/in/douglas-zulim-894287a6 &nbsp; | &nbsp; github.com/DouglasZu",
+        "linkedin.com/in/douglaszulim &nbsp; | &nbsp; github.com/DouglasZu",
         styles["Contact"],
     ),
 ]

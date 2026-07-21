@@ -237,7 +237,7 @@ const translations = {
       location: 'Sorocaba-SP, Brazil · Open to opportunities',
       title: 'QA Engineer focused on automation, APIs, and reliability',
       description: 'Five years of experience in Software Quality, working with test automation, API testing, integrations, and defect investigation using Playwright, TypeScript, Postman, and SQL.',
-      viewProjects: 'View projects', downloadResume: 'Download résumé', metricsLabel: 'Professional indicators with context', metricsEyebrow: 'QUALITY EXPERIENCE', metricsTitle: 'Context behind the numbers.', years: 'years', qaExperience: 'QA experience', automatedScenarios: 'Scenarios in the automated suite', monthlyReleases: 'Releases validated monthly',
+      viewProjects: 'View projects', downloadResume: 'Download resume', metricsLabel: 'Professional indicators with context', metricsEyebrow: 'QUALITY EXPERIENCE', metricsTitle: 'Context behind the numbers.', years: 'years', qaExperience: 'QA experience', automatedScenarios: 'Scenarios in the automated suite', monthlyReleases: 'Releases validated monthly',
       scenariosNote: 'Worked on maintaining and evolving a suite with more than 600 automated scenarios.',
       releasesNote: 'Participated in validating approximately 15 to 20 releases per month.',
       metricContext: 'Team contribution to suite maintenance and release validation.'
@@ -304,7 +304,7 @@ const translations = {
       step5Title: 'Monitor and improve', step5Desc: 'I review execution results, recurring defects, and team feedback to identify opportunities to improve coverage and the quality process.'
     },
     contact: {
-      label: '// Contact', title: 'Let’s <span class="text-gradient">talk?</span>', subtitle: 'For opportunities, projects, or exchanging quality experiences, choose your preferred channel.', email: 'Email', resume: 'Résumé', downloadPdf: 'Download PDF', note: 'The form was removed so the site does not rely on the visitor’s email application or store data without a secure integration.'
+      label: '// Contact', title: 'Let’s <span class="text-gradient">talk?</span>', subtitle: 'For opportunities, projects, or exchanging quality experiences, choose your preferred channel.', email: 'Email', resume: 'Resume', downloadPdf: 'Download PDF', note: 'The form was removed so the site does not rely on the visitor’s email application or store data without a secure integration.'
     },
     footer: { built: 'Built by <strong>Douglas Zulim</strong> · 2026', note: 'Professional content presented with context and transparency.' }
   }
