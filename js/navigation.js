@@ -12,6 +12,7 @@ class Navigation {
     this.mobileOverlay = document.querySelector('.mobile-overlay');
     this.scrollTopBtn = document.querySelector('.scroll-top');
     this.sections = document.querySelectorAll('section[id]');
+    this.mobileBreakpoint = window.matchMedia('(max-width: 48em)');
 
     this.init();
   }
@@ -108,12 +109,21 @@ class Navigation {
       }
     });
     document.addEventListener('languagechange', () => this.updateMobileLabel());
+
+    const syncViewportMenu = (event) => {
+      if (!event.matches) this.closeMobileMenu();
+      if (this.mobileMenu) this.mobileMenu.inert = event.matches && !this.mobileMenu.classList.contains('open');
+    };
+
+    syncViewportMenu(this.mobileBreakpoint);
+    this.mobileBreakpoint.addEventListener?.('change', syncViewportMenu);
   }
 
   toggleMobileMenu() {
     const isOpen = this.mobileMenu.classList.toggle('open');
     this.mobileToggle.classList.toggle('active', isOpen);
     this.mobileToggle.setAttribute('aria-expanded', String(isOpen));
+    this.mobileMenu.inert = !isOpen;
     this.updateMobileLabel();
     if (this.mobileOverlay) {
       this.mobileOverlay.classList.toggle('visible', isOpen);
@@ -126,6 +136,7 @@ class Navigation {
     this.mobileMenu.classList.remove('open');
     this.mobileToggle.classList.remove('active');
     this.mobileToggle.setAttribute('aria-expanded', 'false');
+    this.mobileMenu.inert = this.mobileBreakpoint.matches;
     this.updateMobileLabel();
     if (this.mobileOverlay) {
       this.mobileOverlay.classList.remove('visible');

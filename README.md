@@ -60,6 +60,13 @@ As métricas do artefato de automação são explicitamente fictícias e servem 
 
 O projeto não possui etapa de build.
 
+Execute as validações automáticas de conteúdo e responsividade:
+
+```powershell
+node scripts/validate_portfolio.mjs
+node scripts/validate_responsive.mjs
+```
+
 ```powershell
 python -m http.server 4173 --bind 127.0.0.1
 ```
