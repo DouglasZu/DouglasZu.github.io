@@ -1,0 +1,394 @@
+/* ================================================================
+   RESPONSIVE LAYER
+   Fluid, content-driven rules loaded last to resolve older overrides.
+   ================================================================ */
+
+:root {
+  --page-gutter: clamp(1rem, 4vw, 2.5rem);
+  --content-width: 77.5rem;
+  --tap-target: 2.75rem;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  overflow-x: clip;
+}
+
+.container {
+  inline-size: min(100%, var(--content-width));
+  padding-inline: max(var(--page-gutter), env(safe-area-inset-left)) max(var(--page-gutter), env(safe-area-inset-right));
+}
+
+:where(main, section, article, .container, .hero-content, .hero-proof, .card, .timeline-content) {
+  min-inline-size: 0;
+}
+
+:where(h1, h2, h3) {
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+:where(p, li, dd) {
+  overflow-wrap: anywhere;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.section {
+  padding-block: clamp(3.5rem, 8vw, 6.5rem);
+}
+
+.section-header {
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.section-header h2 {
+  font-size: clamp(1.9rem, 5vw, 4rem);
+}
+
+.subsection-heading h3 {
+  font-size: clamp(1.65rem, 4vw, 2.7rem);
+}
+
+/* Fluid hero: one column first, enhanced when content has room. */
+.hero {
+  min-block-size: auto;
+  padding-block: calc(var(--nav-height) + clamp(2rem, 7vw, 5rem)) clamp(4rem, 9vw, 7rem);
+}
+
+.hero-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2.25rem, 7vw, 5rem);
+}
+
+.hero h1 {
+  max-inline-size: 14ch;
+  font-size: clamp(2.35rem, 11vw, 5.6rem);
+}
+
+.hero-title-role {
+  max-inline-size: 18ch;
+}
+
+.hero-tagline {
+  max-inline-size: 65ch;
+  font-size: clamp(1rem, 2.3vw, 1.18rem);
+}
+
+.hero-buttons {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.hero-buttons .btn {
+  inline-size: 100%;
+  min-block-size: var(--tap-target);
+  justify-content: center;
+  white-space: normal;
+}
+
+.hero-proof {
+  container: hero-proof / inline-size;
+  inline-size: 100%;
+  max-inline-size: 40rem;
+  justify-self: start;
+}
+
+.professional-metrics {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.proof-metric-wide {
+  grid-column: auto;
+}
+
+@container hero-proof (inline-size >= 28rem) {
+  .professional-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .professional-metrics .proof-metric-wide {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Intrinsically responsive collections. */
+.projects-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+}
+
+.skills-groups,
+.artifact-grid,
+.mindset-grid,
+.contact-actions {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.skill-group:first-child,
+.mindset-step:last-child {
+  grid-column: auto;
+}
+
+.project-card,
+.artifact-summary,
+.skill-group,
+.contact-link {
+  container-type: inline-size;
+}
+
+@container (inline-size < 22rem) {
+  .project-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-actions .btn,
+  .artifact-summary .btn {
+    inline-size: 100%;
+    justify-content: center;
+  }
+
+  .skill-group-heading {
+    min-block-size: 0;
+  }
+}
+
+.project-tabs {
+  gap: 0.625rem;
+}
+
+.project-tabs .tab-btn,
+.project-actions .btn,
+.artifact-summary .btn,
+.contact-link {
+  min-block-size: var(--tap-target);
+}
+
+/* Dialogs reflow at phone widths while retaining scrollable code samples. */
+.artifact-dialog {
+  container: artifact-dialog / inline-size;
+  inline-size: min(47.5rem, calc(100% - (2 * var(--page-gutter))));
+  max-block-size: min(90dvh, 54rem);
+}
+
+.dialog-body {
+  max-block-size: calc(90dvh - 5.875rem);
+  overscroll-behavior: contain;
+}
+
+.artifact-details {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@container artifact-dialog (inline-size >= 38rem) {
+  .artifact-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.dialog-body pre {
+  max-inline-size: 100%;
+  overflow-wrap: normal;
+  white-space: pre-wrap;
+}
+
+/* Mobile navigation uses the dynamic viewport and safe-area insets. */
+@media (width <= 48em) {
+  :root {
+    --nav-height: 4.75rem;
+  }
+
+  .navbar {
+    block-size: var(--nav-height);
+    padding-block: 0.5rem;
+  }
+
+  .navbar .container {
+    min-block-size: 3.75rem;
+  }
+
+  .nav-logo-name {
+    display: none;
+  }
+
+  .nav-links {
+    inset: 0 0 0 auto;
+    right: 0;
+    inline-size: min(88vw, 22rem);
+    max-inline-size: 100%;
+    block-size: 100dvh;
+    padding: calc(var(--nav-height) + 1.5rem) max(1.5rem, env(safe-area-inset-right)) max(2rem, env(safe-area-inset-bottom)) 1.5rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transform: translateX(105%);
+    visibility: hidden;
+    transition: transform var(--transition-slow), visibility var(--transition-slow);
+  }
+
+  .nav-links.open {
+    right: 0;
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .nav-links a {
+    display: flex;
+    min-block-size: var(--tap-target);
+    align-items: center;
+    padding-block: 0.625rem;
+  }
+
+  .nav-controls {
+    flex-wrap: wrap;
+  }
+
+  .mobile-menu-toggle,
+  .lang-toggle,
+  .theme-toggle,
+  .dialog-close {
+    min-inline-size: var(--tap-target);
+    min-block-size: var(--tap-target);
+  }
+
+  .proof-body,
+  .card,
+  .timeline-content {
+    padding: clamp(1rem, 4.5vw, 1.4rem);
+  }
+
+  .proof-toolbar {
+    grid-template-columns: 1fr auto;
+  }
+
+  .proof-file {
+    display: none;
+  }
+
+  .experience-container {
+    padding-inline-start: 1.35rem;
+  }
+
+  .experience-container::before {
+    left: 0.25rem;
+  }
+
+  .timeline-dot {
+    left: -1.35rem;
+  }
+
+  .dialog-header {
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .dialog-body {
+    padding: 1rem;
+  }
+}
+
+@media (width >= 32em) {
+  .hero-buttons {
+    grid-template-columns: repeat(2, minmax(0, max-content));
+  }
+
+  .hero-buttons .btn {
+    inline-size: auto;
+  }
+}
+
+@media (width >= 40em) {
+  .skills-groups,
+  .artifact-grid,
+  .mindset-grid,
+  .contact-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skill-group:first-child,
+  .mindset-step:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (width >= 56.25em) {
+  .hero-shell {
+    grid-template-columns: minmax(0, 1.05fr) minmax(22.5rem, 0.8fr);
+    align-items: center;
+  }
+
+  .hero-proof {
+    justify-self: end;
+  }
+}
+
+@media (width >= 64em) {
+  .skills-groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .artifact-grid,
+  .contact-actions {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .mindset-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .skill-group:first-child,
+  .mindset-step:last-child {
+    grid-column: auto;
+  }
+}
+
+@media (width <= 22.5em) {
+  .hero h1 {
+    font-size: clamp(2.1rem, 11vw, 2.6rem);
+  }
+
+  .hero-label {
+    inline-size: 100%;
+  }
+
+  .proof-status {
+    font-size: 0.6rem;
+  }
+
+  .project-tabs .tab-btn {
+    flex: 1 1 calc(50% - 0.625rem);
+  }
+}
+
+@media (pointer: coarse) {
+  :where(a, button, [tabindex]:not([tabindex="-1"])) {
+    min-inline-size: var(--tap-target);
+    min-block-size: var(--tap-target);
+    touch-action: manipulation;
+  }
+}
+
+@media (hover: none) {
+  .card:hover,
+  .btn:hover,
+  .contact-link:hover {
+    transform: none;
+  }
+}
+
+@supports not (overflow: clip) {
+  body {
+    overflow-x: hidden;
+  }
+}
